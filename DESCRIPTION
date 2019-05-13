@@ -1,6 +1,6 @@
 Package: rJOTA
 Type: Package
-Title: Wraps the API for the Brazilian Chamber of Deputies
+Title: Functions and visual aesthetic themes used in <https://jota.info>
 Version: 0.0.1
 Authors@R: c(
     person("Daniel", "Marcelino", , "dmarcelino@live.com", c("aut", "cre")),
@@ -8,8 +8,7 @@ Authors@R: c(
     )
 URL: https://github.com/JOTAJornalismo/rJOTA
 BugReports: https://github.com/JOTAJornalismo/rJOTA/issues
-Description: Retrieve details about, senators, propositions, votings, and parties from
-   the Brazilian upper house <https://dadosabertos.senado.leg.br/>.
+Description: Wraps several functions and visual aesthetic themes used in <https://jota.info>.
 Tags: ggplot themes
 License: MIT
 Encoding: UTF-8

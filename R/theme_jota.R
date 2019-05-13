@@ -3,7 +3,7 @@
 # branco - #ffffff
 # cinza escuro - #232323
 # cinza claro - #edede9 (geralmente usado para fundos)
-# “areia” - #9e9c90 (geralmente usado para linhas pontilhadas)
+# 'areia' - #9e9c90 (geralmente usado para linhas pontilhadas)
 # azul - #2ab2e3
 # verde - #3fa674
 # amarelo - #fed350
@@ -37,6 +37,9 @@ scale_color_jota <- scale_colour_jota
 #' @rdname scale_jota
 scale_fill_jota <- function(...) { discrete_scale("fill", "jota", jota_pal(), ...) }
 
+
+
+#' @md
 #'
 #'
 #'
@@ -45,9 +48,8 @@ scale_fill_jota <- function(...) { discrete_scale("fill", "jota", jota_pal(), ..
 #'
 #'
 #'
-#'
-#'
-#'
+#' @export
+#' @rdname theme_jota
 `theme_jota` <- function(
   base_family="Roboto", base_size = 11.5,
   plot_title_family=base_family, plot_title_size = 18,
@@ -159,7 +161,7 @@ scale_fill_jota <- function(...) { discrete_scale("fill", "jota", jota_pal(), ..
 
 import_roboto_condensed <- function() {
 
-  rc_font_dir <- system.file("fonts", "roboto", package="SciencesPo")
+  rc_font_dir <- system.file("fonts", "roboto", package="rJOTA")
 
   suppressWarnings(suppressMessages(extrafont::font_import(rc_font_dir, prompt=FALSE)))
 
@@ -170,6 +172,7 @@ import_roboto_condensed <- function() {
   )
 
 }
+
 
 #' @rdname Roboto
 #' @md
