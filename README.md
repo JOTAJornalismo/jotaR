@@ -1,35 +1,26 @@
----
-output: rmarkdown::github_document
----
-```{r, echo = FALSE}
-knitr::opts_chunk$set(collapse=TRUE, comment="##", fig.retina=2, fig.path = "inst/figs/README-")
-```
 
-## `rJOTA`: Visual aesthetic themes for 'ggplot2' used in <https://jota.info> 
+## `rJOTA`: Visual aesthetic themes for ‘ggplot2’ used in <https://jota.info>
 
 ### Installation
 
-```{r eval=FALSE}
+``` r
 library(devtools)
 devtools::install_github("JOTAJornalismo/rJOTA")
 ```
 
-```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
-options(width=120)
-```
-
-
 ### Usage
 
-```{r message=FALSE, warning=FALSE, error=FALSE}
+``` r
 library(rJOTA)
 library(tidyverse)
 # current verison
 packageVersion("rJOTA")
+## [1] '0.0.1'
 ```
 
 #### Scatterplot
-```{r}
+
+``` r
 # Inverter a dimensão 
 Governismo <- mutate(Governismo, D1 = D1 * (-1),
                                  D2 = D2 * (-1))
@@ -43,8 +34,9 @@ caption="Fonte: https://jota.info") +
 theme_jota()
 ```
 
+<img src="inst/figs/README-unnamed-chunk-5-1.png" width="672" />
 
-```{r}
+``` r
 # Cut points 
 mutate(Governismo, Indice = ifelse(Prob_Votacao > 0.8, "Favorável", ifelse(Prob_Votacao < 0.2, "Desfavorável", "Neutro"))) %>%
 ggplot() +
@@ -58,10 +50,11 @@ labs(x="Ideologia (D1)", y="Posicionamento Econômico (D2)",
   scale_color_jota()
 ```
 
+<img src="inst/figs/README-unnamed-chunk-6-1.png" width="672" />
 
+#### Bar plot
 
-#### Bar plot 
-```{r}
+``` r
 group_by(Governismo, Reeleito) %>%
   summarize(Indice = mean(Indice, na.rm=TRUE)) %>%
   mutate(Reeleito = ifelse(Reeleito==1, "Reeleito", "Novato")) %>%
@@ -77,10 +70,11 @@ group_by(Governismo, Reeleito) %>%
    scale_fill_jota()
 ```
 
+<img src="inst/figs/README-unnamed-chunk-7-1.png" width="672" />
+
 ### rJOTA Metrics
 
-```{r cloc, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
-cloc::cloc_pkg_md()
-```
-
-
+| Lang | \# Files |  (%) | LoC | (%) | Blank lines |  (%) | \# Lines |  (%) |
+| :--- | -------: | ---: | --: | --: | ----------: | ---: | -------: | ---: |
+| R    |        5 | 0.83 | 157 | 0.8 |          45 | 0.71 |      149 | 0.84 |
+| Rmd  |        1 | 0.17 |  40 | 0.2 |          18 | 0.29 |       28 | 0.16 |

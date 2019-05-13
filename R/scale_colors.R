@@ -8,7 +8,7 @@
 # verde - #3fa674
 # amarelo - #fed350
 
-#' jota_palette <- c("#f05741", "#2ab2e3", "#3fa674", "#fed350")
+jota_palette <- c("#f05741", "#2ab2e3", "#3fa674", "#fed350")
 
 #' A muted, qualitative color palette
 #'
@@ -16,7 +16,7 @@
 #' @examples
 #' library(scales)
 #' scales::show_col(jota_pal()(4))
-jota_pal <- function() { manual_pal(jota_palette) }
+jota_pal <- function() {scales::manual_pal(jota_palette) }
 
 #' Discrete color & fill scales based on the ipsum palette
 #'

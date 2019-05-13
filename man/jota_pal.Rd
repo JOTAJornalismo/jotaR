@@ -2,13 +2,11 @@
 % Please edit documentation in R/scale_colors.R
 \name{jota_pal}
 \alias{jota_pal}
-\title{jota_palette <- c("#f05741", "#2ab2e3", "#3fa674", "#fed350")
-A muted, qualitative color palette}
+\title{A muted, qualitative color palette}
 \usage{
 jota_pal()
 }
 \description{
-jota_palette <- c("#f05741", "#2ab2e3", "#3fa674", "#fed350")
 A muted, qualitative color palette
 }
 \examples{

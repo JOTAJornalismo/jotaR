@@ -34,30 +34,31 @@
 #' @examples \dontrun{
 #' library(ggplot2)
 #' library(dplyr)
+#' data(Governismo)
 #'
-#' ggplot(mtcars, aes(mpg, wt)) +
+#' ggplot(Governismo, aes(x=D1, y=D2)) +
 #'   geom_point() +
-#'   labs(x="Fuel effiiency (mpg)", y="Weight (tons)",
-#'        title="Seminal ggplot2 scatterplot example",
-#'        subtitle="A plot that is only useful for demonstration purposes",
-#'        caption="Brought to you by the letter 'g'") +
+#'   labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)"
+#'        title="Um exemplo de scatterplot",
+#'        subtitle="Apoio ao texto da Reforma: Threshold 80% a 20%",
+#'       caption="Fonte: https://jota.info") +
 #'   theme_jota()
+#'
 #'
 #' # seminal bar chart
 #'
-#' # note: make this font_rc on Windows
-#' update_geom_font_defaults(family=font_rc_light)
-#'
-#' count(mpg, class) %>%
-#'   ggplot(aes(class, n)) +
-#'   geom_col() +
-#'   geom_text(aes(label=n), nudge_y=3) +
-#'   labs(x="Fuel effiiency (mpg)", y="Weight (tons)",
-#'        title="Seminal ggplot2 bar chart example",
-#'        subtitle="A plot that is only useful for demonstration purposes",
-#'        caption="Brought to you by the letter 'g'") +
-#'   theme_jota(grid="Y") +
-#'   theme(axis.text.y=element_blank())
+#' group_by(Governismo, Reeleito) %>%
+#'  summarize(Indice = mean(Indice, na.rm=TRUE)) %>%
+#'  mutate(Reeleito = ifelse(Reeleito==1, "Reeleito", "Novato")) %>%
+#'  ggplot(aes(x=Reeleito, y=Indice)) +
+#'  geom_col() +
+#'  geom_text(aes(label=round(100*Indice,1)), nudge_y=.02) +
+#'  labs(x="Status do parlamentar (Reeleitos vs Novatos)", y="Governismo (Indice)",
+#'       title="Um exemplo de gráfico de barras",
+#'       subtitle="Novatos compõem a principal força de apoio ao governo",
+#'       caption="Fonte: https://jota.info") +
+#'  theme_jota(grid="Y") +
+#'  theme(axis.text.y=element_blank())
 #' }
 #'
 #' @export
