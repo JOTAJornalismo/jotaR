@@ -1,0 +1,43 @@
+---
+output: rmarkdown::github_document
+---
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse=TRUE, comment="##", fig.retina=2, fig.path = "README_figs/README-")
+```
+
+## `rJOTA`: Functions and visual aesthetic themes for 'ggplot2' used in <https://jota.info> 
+
+### Installation
+
+```{r eval=FALSE}
+library(devtools)
+devtools::install_github("JOTAJornalismo/rJOTA")
+```
+
+```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
+options(width=120)
+```
+
+
+### Usage
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(rJOTA)
+library(tidyverse)
+# current verison
+packageVersion("rJOTA")
+
+
+
+
+
+```
+
+
+### rJOTA Metrics
+
+```{r cloc, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+cloc::cloc_pkg_md()
+```
+
+

@@ -1,52 +1,64 @@
-# laranja - #f05741
-# preto - #000000
-# branco - #ffffff
-# cinza escuro - #232323
-# cinza claro - #edede9 (geralmente usado para fundos)
-# 'areia' - #9e9c90 (geralmente usado para linhas pontilhadas)
-# azul - #2ab2e3
-# verde - #3fa674
-# amarelo - #fed350
-
-
-jota_palette <- c("#f05741", "#2ab2e3", "#3fa674", "#fed350")
-
-#' A muted, qualitative color palette
+#' A [ggplot2] theme with opinionated aesthetics for <https://jota.info>
 #'
-#' @export
-#' @examples
-#' library(scales)
-#' scales::show_col(jota_pal()(4))
-jota_pal <- function() { manual_pal(jota_palette) }
-
-#' Discrete color & fill scales based on the ipsum palette
+#' This theme uses 'Roboto Regular' as the default typoghraphy and dashed line for grid plot.
 #'
-#' See [jota_pal]().
+#' Notice: You should [import_roboto]() first and also install the fonts on your
+#' system before trying to use this theme.
+#'
+#' There is an option `rJOTA.loadfonts` which -- if set to `TRUE` -- will
+#' call `extrafont::loadfonts()` to register non-core fonts with R PDF & PostScript
+#' devices. If you are running under Windows, the package calls the same function
+#' to register non-core fonts with the Windows graphics device.
 #'
 #' @md
-#' @inheritDotParams ggplot2::discrete_scale -expand -position
-#' @rdname scale_pub
-#' @export
-scale_colour_jota <- function(...) { discrete_scale("colour", "jota", jota_pal(), ...) }
-
-#' @export
-#' @rdname scale_pub
-scale_color_jota <- scale_colour_jota
-
-#' @export
-#' @rdname scale_jota
-scale_fill_jota <- function(...) { discrete_scale("fill", "jota", jota_pal(), ...) }
-
-
-
+#' @section Why Roboto?:
+#' It's free and has tolerable kerning pairs and multiple weights.
+#'
 #' @md
+#' @param base_family,base_size base font family and size
+#' @param plot_title_family,plot_title_face,plot_title_size,plot_title_margin plot tilte family, face, size and margin
+#' @param subtitle_family,subtitle_face,subtitle_size plot subtitle family, face and size
+#' @param subtitle_margin plot subtitle margin bottom (single numeric value)
+#' @param strip_text_family,strip_text_face,strip_text_size facet label font family, face and size
+#' @param caption_family,caption_face,caption_size,caption_margin plot caption family, face, size and margin
+#' @param axis_title_family,axis_title_face,axis_title_size axis title font family, face and size
+#' @param axis_title_just axis title font justificationk one of `[blmcrt]`
+#' @param axis_text_size font size of axis text
+#' @param plot_margin plot margin (specify with [ggplot2::margin])
+#' @param grid_col grid color
+#' @param grid panel grid (`TRUE`, `FALSE`, or a combination of `X`, `x`, `Y`, `y`)
+#' @param axis_col axis color
+#' @param axis add x or y axes? `TRUE`, `FALSE`, "`xy`"
+#' @param ticks ticks if `TRUE` add ticks
+#' @export
+#' @examples \dontrun{
+#' library(ggplot2)
+#' library(dplyr)
 #'
+#' ggplot(mtcars, aes(mpg, wt)) +
+#'   geom_point() +
+#'   labs(x="Fuel effiiency (mpg)", y="Weight (tons)",
+#'        title="Seminal ggplot2 scatterplot example",
+#'        subtitle="A plot that is only useful for demonstration purposes",
+#'        caption="Brought to you by the letter 'g'") +
+#'   theme_jota()
 #'
+#' # seminal bar chart
 #'
+#' # note: make this font_rc on Windows
+#' update_geom_font_defaults(family=font_rc_light)
 #'
-#'
-#'
-#'
+#' count(mpg, class) %>%
+#'   ggplot(aes(class, n)) +
+#'   geom_col() +
+#'   geom_text(aes(label=n), nudge_y=3) +
+#'   labs(x="Fuel effiiency (mpg)", y="Weight (tons)",
+#'        title="Seminal ggplot2 bar chart example",
+#'        subtitle="A plot that is only useful for demonstration purposes",
+#'        caption="Brought to you by the letter 'g'") +
+#'   theme_jota(grid="Y") +
+#'   theme(axis.text.y=element_blank())
+#' }
 #'
 #' @export
 #' @rdname theme_jota
@@ -159,25 +171,26 @@ scale_fill_jota <- function(...) { discrete_scale("fill", "jota", jota_pal(), ..
 
 
 
-import_roboto_condensed <- function() {
+import_roboto <- function() {
 
-  rc_font_dir <- system.file("fonts", "roboto", package="rJOTA")
+  rr_font_dir <- system.file("fonts", "roboto", package="rJOTA")
 
-  suppressWarnings(suppressMessages(extrafont::font_import(rc_font_dir, prompt=FALSE)))
+  suppressWarnings(suppressMessages(extrafont::font_import(rr_font_dir, prompt=FALSE)))
 
   message(
     sprintf(
       "You will likely need to install these fonts on your system as well.\n\nYou can find them in [%s]",
-      rc_font_dir)
+      rr_font_dir)
   )
 
 }
 
 
+
 #' @rdname Roboto
 #' @md
 #' @title Roboto Regular font name R variable aliases
-#' @description `font_rc` == "`Roboto Regular`"
+#' @description `font_rr` == "`Roboto Regular`"
 #' @format length 1 character vector
 #' @export
-font_rc <- "Roboto Regular"
+font_rr <- "Roboto Regular"
