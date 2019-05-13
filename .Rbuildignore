@@ -1,0 +1,8 @@
+^README\.Rmd$
+^\.Rprofile$
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+.travis.yml
+atual.xlsx
+

@@ -1,0 +1,18 @@
+Package: rJOTA
+Type: Package
+Title: Wraps the API for the Brazilian Chamber of Deputies
+Version: 0.0.1
+Authors@R: c(
+    person("Daniel", "Marcelino", , "dmarcelino@live.com", c("aut", "cre")),
+    person("JOTA", role = c("cph", "fnd"))
+    )
+URL: https://github.com/JOTAJornalismo/rJOTA
+BugReports: https://github.com/JOTAJornalismo/rJOTA/issues
+Description: Retrieve details about, senators, propositions, votings, and parties from
+   the Brazilian upper house <https://dadosabertos.senado.leg.br/>.
+Tags: ggplot themes
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.5.0)
+RoxygenNote: 6.1.1
