@@ -4,7 +4,7 @@
 \alias{theme_jota}
 \title{A \link{ggplot2} theme with opinionated aesthetics for \url{https://jota.info}}
 \usage{
-theme_jota(base_family = "Roboto", base_size = 11.5,
+theme_jota(base_family = "Roboto Regular", base_size = 11.5,
   plot_title_family = base_family, plot_title_size = 18,
   plot_title_face = "bold", plot_title_margin = 10,
   subtitle_family = if (.Platform$OS.type == "windows") "Roboto Regular"

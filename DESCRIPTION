@@ -1,6 +1,6 @@
-Package: rJOTA
+Package: jotaR
 Type: Package
-Title: Functions and visual aesthetic themes used in <https://jota.info>
+Title: Functions and aesthetic styles used for displaying data at <https://jota.info>
 Version: 0.0.1
 Authors@R: c(
     person("Daniel", "Marcelino", , "dmarcelino@live.com", c("aut", "cre")),
@@ -8,7 +8,7 @@ Authors@R: c(
     )
 URL: https://github.com/JOTAJornalismo/rJOTA
 BugReports: https://github.com/JOTAJornalismo/rJOTA/issues
-Description: Wraps several functions and visual aesthetic themes used in <https://jota.info>.
+Description: Wraps several functions, color palettes, and aesthetic `ggplot` themes used for displaying data at <https://jota.info>.
 Tags: ggplot themes
 License: MIT
 Encoding: UTF-8
