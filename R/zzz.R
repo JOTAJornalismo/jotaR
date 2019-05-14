@@ -1,3 +1,5 @@
+jotaR <- new.env()
+
 .onAttach <- function(libname, pkgname) {
 
   if (.Platform$OS.type == "windows")  { # nocov start
@@ -5,7 +7,7 @@
     extrafont::loadfonts("win", quiet = TRUE)
   }
 
-  if (getOption("rJOTA.loadfonts", default = FALSE)) {
+  if (getOption("jotaR.loadfonts", default = FALSE)) {
     if (interactive()) packageStartupMessage("Registering PDF & PostScript fonts with R")
     extrafont::loadfonts("pdf", quiet = TRUE)
     extrafont::loadfonts("postscript", quiet = TRUE)
