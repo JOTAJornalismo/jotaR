@@ -1,6 +1,7 @@
 ^README\.Rmd$
 ^\.Rprofile$
 ^.*\.Rproj$
+^\.DS_Store
 ^\.Rproj\.user$
 ^data-raw$
 .travis.yml

@@ -42,7 +42,7 @@
 #'        title="Um exemplo de scatterplot",
 #'        subtitle="Apoio ao texto da Reforma: Threshold 80% a 20%",
 #'       caption="Fonte: https://jota.info") +
-#'   theme_jota()
+#'   theme_jota(grid=FALSE)
 #'
 #'
 #' # seminal bar chart
