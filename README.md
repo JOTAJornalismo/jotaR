@@ -35,7 +35,9 @@ theme_jota()
 
 ``` r
 # Cut points 
-mutate(Governismo, Indice = ifelse(Prob_Votacao > 0.8, "Favorável", ifelse(Prob_Votacao < 0.2, "Desfavorável", "Neutro"))) %>%
+mutate(Governismo, 
+       Indice = ifelse(Prob_Votacao > 0.8, "Favorável",
+                ifelse(Prob_Votacao < 0.2, "Desfavorável", "Neutro"))) %>%
 ggplot() +
   geom_point(aes(x = D1, y = D2, color = Indice)) +
   geom_abline(aes(slope = -Beta1/Beta2, intercept = -Intercept/Beta2)) +
@@ -52,7 +54,9 @@ labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
 
 ``` r
 # Cut points 
-mutate(Governismo, Indice = ifelse(Prob_Votacao > 0.8, "Favorável", ifelse(Prob_Votacao < 0.2, "Desfavorável", "Neutro"))) %>%
+mutate(Governismo, 
+       Indice = ifelse(Prob_Votacao > 0.8, "Favorável",
+                ifelse(Prob_Votacao < 0.2, "Desfavorável", "Neutro"))) %>%
 ggplot() +
   geom_point(aes(x = D1, y = D2, color = Indice)) +
   geom_hline(yintercept = 0, size = .75, colour="#cbcbcb") +
@@ -79,7 +83,7 @@ group_by(Governismo, Reeleito) %>%
   geom_col() +
   geom_hline(yintercept = 0, size = 1, colour="#666000") +
   geom_text(aes(label=round(Indice,3)), nudge_y=.04) +
-  labs(x="Status do parlamentar (Reeleitos vs Novatos)", y="Governismo (Indice)",
+  labs(x="", y="Governismo (Indice)",
        title="Um exemplo de gráfico de barras",
        subtitle="Novatos compõem a principal força de apoio ao governo",
        caption="Fonte: https://jota.info") +
@@ -97,7 +101,7 @@ group_by(Governismo, Reeleito) %>%
   geom_col() +
   geom_hline(yintercept = 0, size = 1, colour="#666000") +
   geom_text(aes(label=round(Indice,3)), nudge_y=.04) +
-  labs(x="Status do parlamentar (Reeleitos vs Novatos)", y="Governismo (Indice)",
+  labs(x="", y="Governismo (Indice)",
        title="Um exemplo de gráfico de barras",
        subtitle="Novatos compõem a principal força de apoio ao governo",
        caption="Fonte: https://jota.info") +
@@ -131,5 +135,5 @@ labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
 
 | Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |        5 | 0.83 | 157 | 0.63 |          45 | 0.64 |      150 | 0.81 |
-| Rmd  |        1 | 0.17 |  92 | 0.37 |          25 | 0.36 |       35 | 0.19 |
+| R    |        5 | 0.83 | 157 | 0.62 |          45 | 0.64 |      150 | 0.81 |
+| Rmd  |        1 | 0.17 |  96 | 0.38 |          25 | 0.36 |       35 | 0.19 |
