@@ -1,5 +1,5 @@
 
-## `jotaR`: Visual aesthetic themes for ‘ggplot2’ for displaying data at <https://jota.info>
+## `jotaR`: Visual aesthetic themes for ‘ggplot2’ used at <https://jota.info>
 
 ### Installation
 
