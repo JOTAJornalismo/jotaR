@@ -30,6 +30,7 @@
 #' @param axis_col axis color
 #' @param axis add x or y axes? `TRUE`, `FALSE`, "`xy`"
 #' @param ticks ticks if `TRUE` add ticks
+#' @param panel_col plot background color
 #' @export
 #' @examples \dontrun{
 #' library(ggplot2)
@@ -61,10 +62,11 @@
 #'  theme(axis.text.y=element_blank())
 #' }
 #'
+#' @family themes
 #' @export
 #' @rdname theme_jota
 `theme_jota` <- function(
-  base_family="Roboto Regular", base_size = 11.5,
+  base_family="Roboto Regular", base_size = 11,
   plot_title_family=base_family, plot_title_size = 18,
   plot_title_face="bold", plot_title_margin = 10,
   subtitle_family=if (.Platform$OS.type == "windows") "Roboto Regular" else "Arial",
@@ -83,89 +85,89 @@
   axis_title_just = "rt",
   plot_margin = margin(30, 30, 30, 30),
   grid_col ="#9e9c90" , grid = TRUE,
-  axis_col = "#232323", axis = FALSE, ticks = FALSE) {
+  axis_col = "#232323", axis = FALSE, ticks = FALSE, panel_col=NA) {
 # #cbcbcb
 
   ret <- ggplot2::theme_minimal(base_family=base_family, base_size=base_size)
 
-  ret <- ret + theme(legend.background=element_blank())
-  ret <- ret + theme(legend.key=element_blank())
+  ret <- ret + ggplot2::theme(legend.background=element_blank())
+  ret <- ret + ggplot2::theme(legend.key=element_blank())
 
   if (inherits(grid, "character") | grid == TRUE) {
 
-    ret <- ret + theme(panel.grid=element_line(color=grid_col, size=0.2, linetype = "dashed", inherit.blank = FALSE))
-    ret <- ret + theme(panel.grid.major=element_line(color=grid_col, size=0.2, linetype = "dashed", inherit.blank = FALSE))
-    ret <- ret + theme(panel.grid.minor=element_line(color=grid_col, size=0.15, linetype = "dashed", inherit.blank = FALSE))
+    ret <- ret + ggplot2::theme(panel.grid=element_line(color=grid_col, size=0.2, linetype = "dashed", inherit.blank = FALSE))
+    ret <- ret + ggplot2::theme(panel.grid.major=element_line(color=grid_col, size=0.2, linetype = "dashed", inherit.blank = FALSE))
+    ret <- ret + ggplot2::theme(panel.grid.minor=element_line(color=grid_col, size=0.15, linetype = "dashed", inherit.blank = FALSE))
 
     if (inherits(grid, "character")) {
-      if (regexpr("X", grid)[1] < 0) ret <- ret + theme(panel.grid.major.x=element_blank())
-      if (regexpr("Y", grid)[1] < 0) ret <- ret + theme(panel.grid.major.y=element_blank())
-      if (regexpr("x", grid)[1] < 0) ret <- ret + theme(panel.grid.minor.x=element_blank())
-      if (regexpr("y", grid)[1] < 0) ret <- ret + theme(panel.grid.minor.y=element_blank())
+      if (regexpr("X", grid)[1] < 0) ret <- ret + ggplot2::theme(panel.grid.major.x=element_blank())
+      if (regexpr("Y", grid)[1] < 0) ret <- ret + ggplot2::theme(panel.grid.major.y=element_blank())
+      if (regexpr("x", grid)[1] < 0) ret <- ret + ggplot2::theme(panel.grid.minor.x=element_blank())
+      if (regexpr("y", grid)[1] < 0) ret <- ret + ggplot2::theme(panel.grid.minor.y=element_blank())
     }
 
   } else {
-    ret <- ret + theme(panel.grid=element_blank())
+    ret <- ret + ggplot2::theme(panel.grid=element_blank())
   }
 
   if (inherits(axis, "character") | axis == TRUE) {
-    ret <- ret + theme(axis.line=element_line(color=axis_col, size=0.15))
+    ret <- ret + ggplot2::theme(axis.line=element_line(color=axis_col, size=0.15))
     if (inherits(axis, "character")) {
       axis <- tolower(axis)
       if (regexpr("x", axis)[1] < 0) {
-        ret <- ret + theme(axis.line.x=element_blank())
+        ret <- ret + ggplot2::theme(axis.line.x=element_blank())
       } else {
-        ret <- ret + theme(axis.line.x=element_line(color=axis_col, size=0.15))
+        ret <- ret + ggplot2::theme(axis.line.x=element_line(color=axis_col, size=0.15))
       }
       if (regexpr("y", axis)[1] < 0) {
-        ret <- ret + theme(axis.line.y=element_blank())
+        ret <- ret + ggplot2::theme(axis.line.y=element_blank())
       } else {
-        ret <- ret + theme(axis.line.y=element_line(color=axis_col, size=0.15))
+        ret <- ret + ggplot2::theme(axis.line.y=element_line(color=axis_col, size=0.15))
       }
     } else {
-      ret <- ret + theme(axis.line.x=element_line(color=axis_col, size=0.15))
-      ret <- ret + theme(axis.line.y=element_line(color=axis_col, size=0.15))
+      ret <- ret + ggplot2::theme(axis.line.x=element_line(color=axis_col, size=0.15))
+      ret <- ret + ggplot2::theme(axis.line.y=element_line(color=axis_col, size=0.15))
     }
   } else {
-    ret <- ret + theme(axis.line=element_blank())
+    ret <- ret + ggplot2::theme(axis.line=element_blank())
   }
 
   if (!ticks) {
-    ret <- ret + theme(axis.ticks = element_blank())
-    ret <- ret + theme(axis.ticks.x = element_blank())
-    ret <- ret + theme(axis.ticks.y = element_blank())
+    ret <- ret + ggplot2::theme(axis.ticks = element_blank())
+    ret <- ret + ggplot2::theme(axis.ticks.x = element_blank())
+    ret <- ret + ggplot2::theme(axis.ticks.y = element_blank())
   } else {
-    ret <- ret + theme(axis.ticks = element_line(size=0.15))
-    ret <- ret + theme(axis.ticks.x = element_line(size=0.15))
-    ret <- ret + theme(axis.ticks.y = element_line(size=0.15))
-    ret <- ret + theme(axis.ticks.length = grid::unit(5, "pt"))
+    ret <- ret + ggplot2::theme(axis.ticks = element_line(size=0.15))
+    ret <- ret + ggplot2::theme(axis.ticks.x = element_line(size=0.15))
+    ret <- ret + ggplot2::theme(axis.ticks.y = element_line(size=0.15))
+    ret <- ret + ggplot2::theme(axis.ticks.length = grid::unit(5, "pt"))
   }
 
   xj <- switch(tolower(substr(axis_title_just, 1, 1)), b=0, l=0, m=0.5, c=0.5, r=1, t=1)
   yj <- switch(tolower(substr(axis_title_just, 2, 2)), b=0, l=0, m=0.5, c=0.5, r=1, t=1)
 
-  ret <- ret + theme(axis.text.x=element_text(size=axis_text_size, margin=margin(t=0)))
-  ret <- ret + theme(axis.text.y=element_text(size=axis_text_size, margin=margin(r=0)))
-  ret <- ret + theme(axis.title=element_text(size=axis_title_size, family=axis_title_family))
-  ret <- ret + theme(axis.title.x=element_text(size=axis_title_size,
+  ret <- ret + ggplot2::theme(axis.text.x=element_text(size=axis_text_size, margin=ggplot2::margin(t=0)))
+  ret <- ret + ggplot2::theme(axis.text.y=element_text(size=axis_text_size, margin=ggplot2::margin(r=0)))
+  ret <- ret + ggplot2::theme(axis.title=element_text(size=axis_title_size, family=axis_title_family))
+  ret <- ret + ggplot2::theme(axis.title.x=element_text(size=axis_title_size,
                                                family=axis_title_family, face=axis_title_face))
-  ret <- ret + theme(axis.title.y=element_text(size=axis_title_size,
+  ret <- ret + ggplot2::theme(axis.title.y=element_text(size=axis_title_size,
                                                family=axis_title_family, face=axis_title_face))
-  ret <- ret + theme(axis.title.y.right=element_text(size=axis_title_size, angle=90,
+  ret <- ret + ggplot2::theme(axis.title.y.right=element_text(size=axis_title_size, angle=90,
                                                      family=axis_title_family, face=axis_title_face))
-  ret <- ret + theme(strip.text=element_text(hjust=0, size=strip_text_size,
+  ret <- ret + ggplot2::theme(strip.text=element_text(hjust=0, size=strip_text_size,
                                              face=strip_text_face, family=strip_text_family))
-  ret <- ret + theme(panel.spacing=grid::unit(2, "lines"))
-  ret <- ret + theme(plot.title=element_text(hjust=0, size=plot_title_size,
-                                             margin=margin(b=plot_title_margin),
+  ret <- ret + ggplot2::theme(panel.spacing=grid::unit(2, "lines"))
+  ret <- ret + ggplot2::theme(plot.title=element_text(hjust=0, size=plot_title_size,
+                                             margin= ggplot2::margin(b=plot_title_margin),
                                              family=plot_title_family, face=plot_title_face))
-  ret <- ret + theme(plot.subtitle=element_text(hjust=0, size=subtitle_size,
-                                                margin=margin(b=subtitle_margin),
+  ret <- ret + ggplot2::theme(plot.subtitle=element_text(hjust=0, size=subtitle_size,
+                                                margin=ggplot2::margin(b=subtitle_margin),
                                                 family=subtitle_family, face=subtitle_face))
-  ret <- ret + theme(plot.caption=element_text(hjust=1, size=caption_size,
-                                               margin=margin(t=caption_margin),
+  ret <- ret + ggplot2::theme(plot.caption=element_text(hjust=1, size=caption_size,
+                                               margin= ggplot2::margin(t=caption_margin),
                                                family=caption_family, face=caption_face))
-  ret <- ret + theme(plot.margin=plot_margin)
+  ret <- ret + ggplot2::theme(plot.margin=plot_margin)
 
   ret
 

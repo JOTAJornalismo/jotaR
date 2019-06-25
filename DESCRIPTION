@@ -14,4 +14,10 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.5.0)
+Imports:
+    ggplot2 (>= 3.0.0),
+    graphics,
+    grid,
+    scales,
+    extrafont
 RoxygenNote: 6.1.1

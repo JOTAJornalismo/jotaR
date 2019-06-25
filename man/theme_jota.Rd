@@ -4,7 +4,7 @@
 \alias{theme_jota}
 \title{A \link{ggplot2} theme with opinionated aesthetics for \url{https://jota.info}}
 \usage{
-theme_jota(base_family = "Roboto Regular", base_size = 11.5,
+theme_jota(base_family = "Roboto Regular", base_size = 11,
   plot_title_family = base_family, plot_title_size = 18,
   plot_title_face = "bold", plot_title_margin = 10,
   subtitle_family = if (.Platform$OS.type == "windows") "Roboto Regular"
@@ -17,7 +17,8 @@ theme_jota(base_family = "Roboto Regular", base_size = 11.5,
   axis_title_family = base_family, axis_title_size = 9,
   axis_title_face = "plain", axis_title_just = "rt",
   plot_margin = margin(30, 30, 30, 30), grid_col = "#9e9c90",
-  grid = TRUE, axis_col = "#232323", axis = FALSE, ticks = FALSE)
+  grid = TRUE, axis_col = "#232323", axis = FALSE, ticks = FALSE,
+  panel_col = NA)
 }
 \arguments{
 \item{base_family, base_size}{base font family and size}
@@ -49,6 +50,8 @@ theme_jota(base_family = "Roboto Regular", base_size = 11.5,
 \item{axis}{add x or y axes? \code{TRUE}, \code{FALSE}, "\code{xy}"}
 
 \item{ticks}{ticks if \code{TRUE} add ticks}
+
+\item{panel_col}{plot background color}
 }
 \description{
 This theme uses 'Roboto Regular' as the default typoghraphy and dashed line for grid plot.
@@ -99,3 +102,8 @@ group_by(Governismo, Reeleito) \%>\%
 }
 
 }
+\seealso{
+Other themes: \code{\link{theme_horizontal}},
+  \code{\link{theme_map}}
+}
+\concept{themes}

@@ -1,4 +1,12 @@
+packrat/lib*/
+src/copies
+tests/old
 .Rproj.user
 .Rhistory
 .RData
 .DS_Store
+.Rprofile
+.Rapp.history
+.lintr
+packrat/src/
+.httr-oauth
