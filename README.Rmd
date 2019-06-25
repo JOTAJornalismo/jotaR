@@ -54,7 +54,20 @@ caption="Fonte: https://jota.info") +
 theme_jota()
 ```
 
+#### With background colors
+```{r}
+ggplot(Governismo, aes(x=D1, y=D2)) +
+geom_point() +
+geom_abline(aes(slope = -Beta1/Beta2, intercept = -Intercept/Beta2)) +
+labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
+title="Exemplo de Scatterplot",
+subtitle="Apoio ao texto da Reforma: Threshold 80% a 20%",
+caption="Fonte: https://jota.info") +
+theme_jota(panel_col = "#F0F0F0")
+```
 
+
+#### Scatterplot (map of ideal points)
 ```{r}
 # Cut points 
 mutate(Governismo, 
@@ -71,6 +84,7 @@ labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
   scale_color_idealpoints() +
    theme(legend.position = "top")
 ```
+
 
 ```{r}
 # Cut points 

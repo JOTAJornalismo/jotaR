@@ -33,6 +33,23 @@ theme_jota()
 
 <img src="inst/figs/README-unnamed-chunk-4-1.png" width="720" style="display: block; margin: auto;" />
 
+#### With background colors
+
+``` r
+ggplot(Governismo, aes(x=D1, y=D2)) +
+geom_point() +
+geom_abline(aes(slope = -Beta1/Beta2, intercept = -Intercept/Beta2)) +
+labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
+title="Exemplo de Scatterplot",
+subtitle="Apoio ao texto da Reforma: Threshold 80% a 20%",
+caption="Fonte: https://jota.info") +
+theme_jota(panel_col = "#F0F0F0")
+```
+
+<img src="inst/figs/README-unnamed-chunk-5-1.png" width="720" style="display: block; margin: auto;" />
+
+#### Scatterplot (map of ideal points)
+
 ``` r
 # Cut points 
 mutate(Governismo, 
@@ -50,7 +67,7 @@ labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
    theme(legend.position = "top")
 ```
 
-<img src="inst/figs/README-unnamed-chunk-5-1.png" width="720" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-6-1.png" width="720" style="display: block; margin: auto;" />
 
 ``` r
 # Cut points 
@@ -71,7 +88,7 @@ labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
    theme(legend.position = "top")
 ```
 
-<img src="inst/figs/README-unnamed-chunk-6-1.png" width="720" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-7-1.png" width="720" style="display: block; margin: auto;" />
 
 #### Bar plot
 
@@ -91,7 +108,7 @@ group_by(Governismo, Reeleito) %>%
   theme(axis.text.y=element_blank(), legend.position = "none")
 ```
 
-<img src="inst/figs/README-unnamed-chunk-7-1.png" width="720" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-8-1.png" width="720" style="display: block; margin: auto;" />
 
 ``` r
 group_by(Governismo, Reeleito) %>%
@@ -110,11 +127,11 @@ group_by(Governismo, Reeleito) %>%
    scale_fill_jota()
 ```
 
-<img src="inst/figs/README-unnamed-chunk-8-1.png" width="720" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-9-1.png" width="720" style="display: block; margin: auto;" />
 
 ### jotaR Metrics
 
 | Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |        5 | 0.83 | 163 | 0.66 |          52 | 0.69 |      168 | 0.84 |
-| Rmd  |        1 | 0.17 |  83 | 0.34 |          23 | 0.31 |       32 | 0.16 |
+| R    |        6 | 0.86 | 251 | 0.73 |          65 | 0.72 |      211 | 0.85 |
+| Rmd  |        1 | 0.14 |  91 | 0.27 |          25 | 0.28 |       36 | 0.15 |
