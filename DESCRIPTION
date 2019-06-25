@@ -8,7 +8,7 @@ Authors@R: c(
     )
 URL: https://github.com/JOTAJornalismo/rJOTA
 BugReports: https://github.com/JOTAJornalismo/rJOTA/issues
-Description: Wraps several functions, color palettes, and aesthetic `ggplot` themes used for displaying data at <https://jota.info>.
+Description: Wraps functions, color palettes, and aesthetics for `ggplot` themes used for displaying data at <https://jota.info>.
 Tags: ggplot themes
 License: MIT
 Encoding: UTF-8

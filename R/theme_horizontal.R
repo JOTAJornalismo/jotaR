@@ -12,7 +12,7 @@
 #'
 #' ggplot(Governismo, aes(x=D1, y=D2)) +
 #'   geom_point() +
-#'   labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)"
+#'   labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
 #'        title="Um exemplo de scatterplot",
 #'        subtitle="Apoio ao texto da Reforma: Threshold 80% a 20%",
 #'       caption="Fonte: https://jota.info") +

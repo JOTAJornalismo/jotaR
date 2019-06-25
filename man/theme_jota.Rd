@@ -16,9 +16,9 @@ theme_jota(base_family = "Roboto Regular", base_size = 11,
   caption_margin = 10, axis_text_size = base_size,
   axis_title_family = base_family, axis_title_size = 9,
   axis_title_face = "plain", axis_title_just = "rt",
-  plot_margin = margin(30, 30, 30, 30), grid_col = "#9e9c90",
+  plot_margin = margin(5, 5, 3, 5), grid_col = "#9e9c90",
   grid = TRUE, axis_col = "#232323", axis = FALSE, ticks = FALSE,
-  panel_col = NA)
+  panel_col = FALSE)
 }
 \arguments{
 \item{base_family, base_size}{base font family and size}
@@ -51,7 +51,7 @@ theme_jota(base_family = "Roboto Regular", base_size = 11,
 
 \item{ticks}{ticks if \code{TRUE} add ticks}
 
-\item{panel_col}{plot background color}
+\item{panel_col}{plot background color, if \code{FALSE} background color is "white".}
 }
 \description{
 This theme uses 'Roboto Regular' as the default typoghraphy and dashed line for grid plot.
@@ -78,7 +78,7 @@ data(Governismo)
 
 ggplot(Governismo, aes(x=D1, y=D2)) +
   geom_point() +
-  labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)"
+  labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
        title="Um exemplo de scatterplot",
        subtitle="Apoio ao texto da Reforma: Threshold 80\% a 20\%",
       caption="Fonte: https://jota.info") +
@@ -103,7 +103,6 @@ group_by(Governismo, Reeleito) \%>\%
 
 }
 \seealso{
-Other themes: \code{\link{theme_horizontal}},
-  \code{\link{theme_map}}
+Other themes: \code{\link{theme_horizontal}}
 }
 \concept{themes}

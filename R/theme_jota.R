@@ -30,7 +30,7 @@
 #' @param axis_col axis color
 #' @param axis add x or y axes? `TRUE`, `FALSE`, "`xy`"
 #' @param ticks ticks if `TRUE` add ticks
-#' @param panel_col plot background color
+#' @param panel_col plot background color, if `FALSE` background color is "white".
 #' @export
 #' @examples \dontrun{
 #' library(ggplot2)
@@ -39,7 +39,7 @@
 #'
 #' ggplot(Governismo, aes(x=D1, y=D2)) +
 #'   geom_point() +
-#'   labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)"
+#'   labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
 #'        title="Um exemplo de scatterplot",
 #'        subtitle="Apoio ao texto da Reforma: Threshold 80% a 20%",
 #'       caption="Fonte: https://jota.info") +
@@ -83,21 +83,34 @@
   axis_title_size = 9,
   axis_title_face = "plain",
   axis_title_just = "rt",
-  plot_margin = margin(30, 30, 30, 30),
-  grid_col ="#9e9c90" , grid = TRUE,
-  axis_col = "#232323", axis = FALSE, ticks = FALSE, panel_col=NA) {
-# #cbcbcb
+  plot_margin = margin(5,5,3,5),
+  grid_col ="#9e9c90" ,
+  grid = TRUE,
+  axis_col = "#232323",
+  axis = FALSE,
+  ticks = FALSE,
+  panel_col=FALSE) {
+# "#cbcbcb"
+# "#F0F0F0"
+  if (inherits(panel_col, "character")) {
+  ret <- ggplot2::theme_minimal(base_family=base_family, base_size=base_size) +
+  ggplot2::theme(plot.background = element_rect(linetype = 0, colour = NA,fill = panel_col)) +
+  ggplot2::theme(legend.background = element_rect(linetype = 0,colour = NA))
+  }
 
-  ret <- ggplot2::theme_minimal(base_family=base_family, base_size=base_size)
+  else {
+    ret <- ggplot2::theme_minimal(base_family=base_family, base_size=base_size) +
+     ggplot2::theme(legend.background=element_blank()) +
+    ggplot2::theme(legend.key=element_blank())
+  }
 
-  ret <- ret + ggplot2::theme(legend.background=element_blank())
-  ret <- ret + ggplot2::theme(legend.key=element_blank())
+
 
   if (inherits(grid, "character") | grid == TRUE) {
 
-    ret <- ret + ggplot2::theme(panel.grid=element_line(color=grid_col, size=0.2, linetype = "dashed", inherit.blank = FALSE))
-    ret <- ret + ggplot2::theme(panel.grid.major=element_line(color=grid_col, size=0.2, linetype = "dashed", inherit.blank = FALSE))
-    ret <- ret + ggplot2::theme(panel.grid.minor=element_line(color=grid_col, size=0.15, linetype = "dashed", inherit.blank = FALSE))
+    ret <- ret + ggplot2::theme(panel.grid=element_line(color=grid_col, size=0.20, linetype = "dashed", inherit.blank = FALSE))
+    ret <- ret + ggplot2::theme(panel.grid.major=element_line(color=grid_col, size=0.20, linetype = "dashed", inherit.blank = FALSE))
+    ret <- ret + ggplot2::theme(panel.grid.minor=element_line(color=grid_col, size=0.10, linetype = "dashed", inherit.blank = FALSE))
 
     if (inherits(grid, "character")) {
       if (regexpr("X", grid)[1] < 0) ret <- ret + ggplot2::theme(panel.grid.major.x=element_blank())
@@ -111,22 +124,22 @@
   }
 
   if (inherits(axis, "character") | axis == TRUE) {
-    ret <- ret + ggplot2::theme(axis.line=element_line(color=axis_col, size=0.15))
+    ret <- ret + ggplot2::theme(axis.line=element_line(color=axis_col, size=0.20))
     if (inherits(axis, "character")) {
       axis <- tolower(axis)
       if (regexpr("x", axis)[1] < 0) {
         ret <- ret + ggplot2::theme(axis.line.x=element_blank())
       } else {
-        ret <- ret + ggplot2::theme(axis.line.x=element_line(color=axis_col, size=0.15))
+        ret <- ret + ggplot2::theme(axis.line.x=element_line(color=axis_col, size=0.20))
       }
       if (regexpr("y", axis)[1] < 0) {
         ret <- ret + ggplot2::theme(axis.line.y=element_blank())
       } else {
-        ret <- ret + ggplot2::theme(axis.line.y=element_line(color=axis_col, size=0.15))
+        ret <- ret + ggplot2::theme(axis.line.y=element_line(color=axis_col, size=0.20))
       }
     } else {
-      ret <- ret + ggplot2::theme(axis.line.x=element_line(color=axis_col, size=0.15))
-      ret <- ret + ggplot2::theme(axis.line.y=element_line(color=axis_col, size=0.15))
+      ret <- ret + ggplot2::theme(axis.line.x=element_line(color=axis_col, size=0.20))
+      ret <- ret + ggplot2::theme(axis.line.y=element_line(color=axis_col, size=0.20))
     }
   } else {
     ret <- ret + ggplot2::theme(axis.line=element_blank())
@@ -137,9 +150,9 @@
     ret <- ret + ggplot2::theme(axis.ticks.x = element_blank())
     ret <- ret + ggplot2::theme(axis.ticks.y = element_blank())
   } else {
-    ret <- ret + ggplot2::theme(axis.ticks = element_line(size=0.15))
-    ret <- ret + ggplot2::theme(axis.ticks.x = element_line(size=0.15))
-    ret <- ret + ggplot2::theme(axis.ticks.y = element_line(size=0.15))
+    ret <- ret + ggplot2::theme(axis.ticks = element_line(color=axis_col, size=0.20))
+    ret <- ret + ggplot2::theme(axis.ticks.x = element_line(color=axis_col, size=0.20))
+    ret <- ret + ggplot2::theme(axis.ticks.y = element_line(color=axis_col, size=0.20))
     ret <- ret + ggplot2::theme(axis.ticks.length = grid::unit(5, "pt"))
   }
 
@@ -198,3 +211,31 @@ import_roboto <- function() {
 #' @format length 1 character vector
 #' @export
 font_rr <- "Roboto Regular"
+
+
+
+
+
+
+import_sans <- function() {
+
+  sr_font_dir <- system.file("fonts", "sans", package="rJOTA")
+
+  suppressWarnings(suppressMessages(extrafont::font_import(sr_font_dir, prompt=FALSE)))
+
+  message(
+    sprintf(
+      "You will likely need to install these fonts on your system as well.\n\nYou can find them in [%s]",
+      sr_font_dir)
+  )
+
+}
+
+
+#' @rdname Sans
+#' @md
+#' @title Sans Regular font name R variable aliases
+#' @description `font_sr` == "`Sans Regular`"
+#' @format length 1 character vector
+#' @export
+font_sr <- "Sans Regular"
