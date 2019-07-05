@@ -1,7 +1,7 @@
 Package: jotaR
 Type: Package
 Title: Functions and aesthetic styles used for displaying data at <https://jota.info>
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: c(
     person("Daniel", "Marcelino", , "dmarcelino@live.com", c("aut", "cre")),
     person("JOTA", role = c("cph", "fnd"))
@@ -13,7 +13,7 @@ Tags: ggplot themes
 License: MIT
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 3.5.0)
+Depends: R (>= 3.4.0)
 Imports:
     ggplot2 (>= 3.0.0),
     graphics,
