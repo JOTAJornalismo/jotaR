@@ -60,7 +60,7 @@ This theme uses 'Roboto Regular' as the default typoghraphy and dashed line for 
 Notice: You should \url{import_roboto} first and also install the fonts on your
 system before trying to use this theme.
 
-There is an option \code{rJOTA.loadfonts} which -- if set to \code{TRUE} -- will
+There is an option \code{jotaR.loadfonts} which -- if set to \code{TRUE} -- will
 call \code{extrafont::loadfonts()} to register non-core fonts with R PDF & PostScript
 devices. If you are running under Windows, the package calls the same function
 to register non-core fonts with the Windows graphics device.

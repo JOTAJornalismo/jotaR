@@ -16,7 +16,7 @@ jotaR <- new.env()
   fnt <- extrafont::fonttable()
   if (!any(grepl("Arial|Arial[ ]Narrow|Roboto[ ]Regular", fnt$FamilyName))) {
     packageStartupMessage("NOTE: Arial, Arial Narrow or Roboto fonts are required to use these themes.")
-    packageStartupMessage("      Please use rJOTA::import_roboto() to install Roboto Regular and")
+    packageStartupMessage("      Please use jotaR::import_roboto() to install Roboto Regular and")
     packageStartupMessage("      if Arial Narrow is not on your system, please install it.")
   } # nocov end
 

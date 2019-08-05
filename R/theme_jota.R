@@ -5,7 +5,7 @@
 #' Notice: You should [import_roboto]() first and also install the fonts on your
 #' system before trying to use this theme.
 #'
-#' There is an option `rJOTA.loadfonts` which -- if set to `TRUE` -- will
+#' There is an option `jotaR.loadfonts` which -- if set to `TRUE` -- will
 #' call `extrafont::loadfonts()` to register non-core fonts with R PDF & PostScript
 #' devices. If you are running under Windows, the package calls the same function
 #' to register non-core fonts with the Windows graphics device.
@@ -190,7 +190,7 @@
 
 import_roboto <- function() {
 
-  rr_font_dir <- system.file("fonts", "roboto", package="rJOTA")
+  rr_font_dir <- system.file("fonts", "roboto", package="jotaR")
 
   suppressWarnings(suppressMessages(extrafont::font_import(rr_font_dir, prompt=FALSE)))
 
@@ -219,7 +219,7 @@ font_rr <- "Roboto Regular"
 
 import_sans <- function() {
 
-  sr_font_dir <- system.file("fonts", "sans", package="rJOTA")
+  sr_font_dir <- system.file("fonts", "sans", package="jotaR")
 
   suppressWarnings(suppressMessages(extrafont::font_import(sr_font_dir, prompt=FALSE)))
 

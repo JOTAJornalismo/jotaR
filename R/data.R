@@ -31,5 +31,5 @@
 #' @keywords datasets
 #' @name Governismo
 #' @usage data(Governismo)
-#' @format A \code{data.frame} object with \Sexpr[stage=build,results=rd]{ncol(rJOTA::Governismo)} variables and \Sexpr[stage=build,results=rd]{nrow(rJOTA::Governismo)} observations.
+#' @format A \code{data.frame} object with \Sexpr[stage=build,results=rd]{ncol(jotaR::Governismo)} variables and \Sexpr[stage=build,results=rd]{nrow(jotaR::Governismo)} observations.
 NULL
