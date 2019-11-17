@@ -40,6 +40,8 @@ library(jotaR)
 library(tidyverse)
 # current verison
 packageVersion("jotaR")
+
+jotaR::import_roboto()
 ```
 
 #### Scatterplot
@@ -143,9 +145,54 @@ group_by(Governismo, Reeleito) %>%
 ```
 
 
+#### Using with logos
+
+```{r, include=FALSE}
+pl = group_by(Governismo, Reeleito) %>%
+  summarize(Indice = mean(Indice, na.rm=TRUE)) %>%
+  mutate(Reeleito = ifelse(Reeleito==1, "Reeleito", "Novato")) %>%
+  ggplot(aes(x=Reeleito, y=Indice, fill=Reeleito)) +
+  geom_col() +
+  geom_hline(yintercept = 0, size = 1, colour="#666000") +
+  geom_text(aes(label=round(Indice,3)), nudge_y=.04) +
+  labs(x="", y="ÍNDICE DE GOVERNISMO",
+       title="Exemplo de Gráfico de Barras",
+       subtitle="Novatos compõem a principal força de apoio ao governo") +
+  theme_jota(grid="Y") +
+  theme(axis.text.y=element_blank(), legend.position = "none") +
+   scale_fill_jota()
+
+
+pl0 = group_by(Governismo, Reeleito) %>%
+  summarize(Indice = mean(Indice, na.rm=TRUE)) %>%
+  mutate(Reeleito = ifelse(Reeleito==1, "Reeleito", "Novato")) %>%
+  ggplot(aes(x=Reeleito, y=Indice, fill=Reeleito)) +
+  geom_col() +
+  geom_hline(yintercept = 0, size = 1, colour="#666000") +
+  geom_text(aes(label=round(Indice,3)), nudge_y=.04) +
+  labs(x="", y="ÍNDICE DE GOVERNISMO",
+       title="Exemplo de Gráfico de Barras",
+       subtitle="Novatos compõem a principal força de apoio ao governo") +
+  theme_jota(grid="Y", panel_col = "#F0F0F0") +
+  theme(axis.text.y=element_blank(), legend.position = "none") +
+   scale_fill_jota()
+
+```
+
+
+```{r, fig.width = 9.5}
+
+
+finalize_ggplot(plot_name = pl,
+ source = "Pesquisa Parlamentar realizada com 200 deputados entre os dias 27 e 30 de outubro.",
+ width_pixels = 640,
+ height_pixels = 450)
+```
+
+
 
 ### jotaR Metrics
-```{r cloc, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+```{r cloc, eval=FALSE, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
 cloc::cloc_pkg_md()
 ```
 

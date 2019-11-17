@@ -188,9 +188,22 @@
 
 
 
+
+
+
+#' @title Import roboto fonts
+#' Make sure the roboto fonts are in your path
+#' @md
+#' @family fonts
+#' @export
+#' @rdname import_roboto
+#' @export
+#' @examples \dontrun{
+#' import_roboto()
+#' }
 import_roboto <- function() {
 
-  rr_font_dir <- system.file("fonts", "roboto", package="jotaR")
+  rr_font_dir <- system.file("fonts", "roboto", package = "jotaR")
 
   suppressWarnings(suppressMessages(extrafont::font_import(rr_font_dir, prompt=FALSE)))
 

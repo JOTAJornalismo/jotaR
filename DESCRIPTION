@@ -13,11 +13,23 @@ Tags: ggplot themes
 License: MIT
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 3.4.0)
+Depends: R (>= 3.6.0)
 Imports:
     ggplot2 (>= 3.0.0),
     graphics,
     grid,
+    png,
+    cowplot,
+    gridExtra,
+    purrr,
     scales,
     extrafont
 RoxygenNote: 6.1.1
+Collate:
+    'data.R'
+    'finalize_ggplot.R'
+    'flush_ticks.R'
+    'scale_colors.R'
+    'theme_horizontal.R'
+    'theme_jota.R'
+    'zzz.R'

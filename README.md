@@ -15,7 +15,9 @@ library(jotaR)
 library(tidyverse)
 # current verison
 packageVersion("jotaR")
-## [1] '0.0.1'
+## [1] '0.0.2'
+
+jotaR::import_roboto()
 ```
 
 #### Scatterplot
@@ -129,9 +131,17 @@ group_by(Governismo, Reeleito) %>%
 
 <img src="inst/figs/README-unnamed-chunk-9-1.png" width="720" style="display: block; margin: auto;" />
 
-### jotaR Metrics
+#### Using with logos
 
-| Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
-| :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |        6 | 0.86 | 251 | 0.73 |          65 | 0.72 |      211 | 0.85 |
-| Rmd  |        1 | 0.14 |  91 | 0.27 |          25 | 0.28 |       36 | 0.15 |
+``` r
+
+
+finalize_ggplot(plot_name = pl,
+ source = "Pesquisa Parlamentar realizada com 200 deputados entre os dias 27 e 30 de outubro.",
+ width_pixels = 640,
+ height_pixels = 450)
+```
+
+<img src="inst/figs/README-unnamed-chunk-11-1.png" width="912" style="display: block; margin: auto;" />
+
+### jotaR Metrics
