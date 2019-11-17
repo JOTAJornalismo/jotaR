@@ -1,4 +1,7 @@
-#' Makes axis text labels flush on the ends
+#' @importFrom utils globalVariables
+utils::globalVariables(c("ggplot_build"))
+
+#' @title Makes axis text labels flush on the ends
 #'
 #' A covenience function intended for basic, fixed-scale plots only (i.e. does not handle
 #' free scales in facets).\cr
@@ -15,6 +18,8 @@
 #' @param cat if `TRUE` then display `theme()` statements and copy them to the clipboard
 #' @return ggplot2 object with `theme()` elements added
 #' @note Intended for basic, fixed-scale plots only (i.e. does not handle free scales in facets).
+#'
+#' @importFrom  ggplot2 theme element_text
 #' @export
 flush_ticks <- function(gg, flush="XY", plot=TRUE, cat=TRUE) {
 

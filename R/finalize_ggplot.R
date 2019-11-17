@@ -1,11 +1,13 @@
-#' Arrange Multiple ggplots
+#' @importFrom utils globalVariables
+utils::globalVariables(c("get_legend", ".collapse"))
+
+#' @title Arrange Multiple ggplots
 #'
 #' @description Arrange multiple ggplots on the same page. Wrapper around
-#'   \code{\link[cowplot]{plot}()}. Can arrange multiple ggplots over
+#'   \code{\link[cowplot]. Can arrange multiple ggplots over
 #'   multiple pages, compared to the standard
-#'   \code{\link[cowplot]{plot}()}. Can also create a common unique legend
+#'   \code{\link[cowplot]}. Can also create a common unique legend
 #'   for multiple plots.
-#' @inheritParams cowplot::plot
 #' @param ... list of plots to be arranged into the grid. The plots can be
 #'   either ggplot2 plot objects or arbitrary gtables.
 #' @param plotlist (optional) list of plots to display.
@@ -27,20 +29,23 @@
 #' @param widths (optional) numerical vector of relative columns widths. For
 #'   example, in a two-column grid, widths = c(2, 1) would make the first column
 #'   twice as wide as the second column.
+#' @param hjust A value that controls horizontal justification.
+#' @param vjust A value that controls vertical justification.
+#' @param align A value that controls aligment, one of ("none", "h", "v", "hv").
 #' @param heights same as \code{widths} but for column heights.
 #' @param legend character specifying legend position. Allowed values are one of
-#'   c("top", "bottom", "left", "right", "none"). To remove the legend use
-#'   legend = "none".
+#' c("top", "bottom", "left", "right", "none"). To remove the legend use
+#' legend = "none".
 #' @param common.legend logical value. Default is FALSE. If TRUE, a common
 #'   unique legend will be created for arranged plots.
 #' @return return an object of class \code{arrange_ggplot}, which is a ggplot or a
 #'   list of ggplot.
-
 #'
+#' @importFrom ggplot2 theme
 #' @export
 arrange_ggplot <- function(..., plotlist = NULL, ncol = NULL, nrow = NULL,
-                      labels = NULL, label.x = 0, label.y = 1, hjust = -0.5, vjust = 1.5,
-                      font.label = list(size = 14, color = "black", face = "bold", family = NULL),
+                      labels = NULL, label.x = 0, label.y = 1, hjust = -0.5,
+                      vjust = 1.5, font.label = list(size = 14, color = "black", face = "bold", family = NULL),
                       align = c("none", "h", "v", "hv"),
                       widths = 1, heights = 1,
                       legend = NULL, common.legend = FALSE )
@@ -128,6 +133,8 @@ arrange_ggplot <- function(..., plotlist = NULL, ncol = NULL, nrow = NULL,
 }
 
 
+#' @importFrom grid unit
+#'
 .plot_grid <- function(plotlist, legend = "top", common.legend.grob = NULL,  ... ){
 
 
@@ -208,7 +215,10 @@ arrange_ggplot <- function(..., plotlist = NULL, ncol = NULL, nrow = NULL,
 #' @title Save ggplot2 objetc
 #'
 #' @description A wrapper function for the ggplot2 ggsave with custom parameters.
-#'
+#' @param plot The plot object (ggplot2)
+#' @param save_filepath Exact filepath that you want the plot to be saved to
+#' @param width Width in pixels that you want to save your chart to
+#' @param height Height in pixels that you want to save your chart to
 #' @importFrom grid grid.draw
 #'
 #' @export
@@ -235,8 +245,7 @@ right_align <- function(plot_name, pieces){
 }
 
 
-#'
-#'
+
 #' @importFrom grid linesGrob
 #' @importFrom grid textGrob
 #' @importFrom grid rasterGrob
@@ -249,15 +258,14 @@ create_footer640x450 <- function(source, image_path) {
   footer <- grid::grobTree(#grid::linesGrob(x = grid::unit(c(0, .10), "npc"), y = grid::unit(16, "npc"), gp = grid::gpar(col = 'red', lwd = 7, lineend = "square")),
                           # grid::linesGrob(x = grid::unit(c(0, 1), "npc"), y = grid::unit(1.05, "npc"), gp = grid::gpar(col = 'lightgrey', lwd = 2.5)),
                            grid::textGrob(source,
-                                          x = 0.004, hjust = 0, gp = grid::gpar(fontsize=12)),
-                           grid::rasterGrob(png::readPNG(image_path), y = 0.600, x = 0.939, interpolate = TRUE))
+                                          x = 0.010, hjust = 0, vjust = 0.450, gp = grid::gpar(fontsize=10)),
+                           grid::rasterGrob(png::readPNG(image_path), y = 0.600, x = 0.940, interpolate = TRUE))
   return(footer)
 }
 
 
 
-#'
-#'
+
 #' @importFrom grid linesGrob
 #' @importFrom grid textGrob
 #' @importFrom grid rasterGrob
@@ -270,17 +278,20 @@ create_footer593x367 <- function(source, image_path) {
   footer <- grid::grobTree(# grid::linesGrob(x = grid::unit(c(0, .10), "npc"), y = grid::unit(12, "npc"), gp = grid::gpar(col = 'red', lwd = 7)),
                            # grid::linesGrob(x = grid::unit(c(0, 1), "npc"), y = grid::unit(1.05, "npc"), gp = grid::gpar(col = 'lightgrey', lwd = 2.5)),
                            grid::textGrob(source,
-                                          x = 0.004, hjust = 0, gp = grid::gpar(fontsize=12)),
-                           grid::rasterGrob(png::readPNG(image_path),y = 0.600, x = 0.937, interpolate = TRUE))
+                                          x = 0.010, hjust = 0, vjust = 0.450, gp = grid::gpar(fontsize=10)),
+                           grid::rasterGrob(png::readPNG(image_path),y = 0.600, x = 0.938, interpolate = TRUE))
   return(footer)
 }
 
 
-#' Arrange alignment and save JOTA ggplot chart
+
+
+
+#' @title Arrange alignment and save JOTA ggplot chart
 #'
 #' Running this function will save your plot with the correct guidelines for publication for a BBC News graphic.
 #' It will left align your title, subtitle and source, add the JOTA logo at the bottom right and save it to your specified location.
-#' @param plot_name The variable name of the plot you have created that you want to format and save
+#' @param plot The variable name of the plot you have created that you want to format and save
 #' @param source The text you want to come after the text 'Source:' in the bottom left hand side of your side
 #' @param save_filepath Exact filepath that you want the plot to be saved to
 #' @param width_pixels Width in pixels that you want to save your chart to - defaults to 640
@@ -291,6 +302,7 @@ create_footer593x367 <- function(source, image_path) {
 
 #' @keywords finalize_ggplot
 #' @examples
+#' \dontrun{
 #' library(ggplot2)
 #' data(Governismo)
 #'
@@ -302,16 +314,16 @@ create_footer593x367 <- function(source, image_path) {
 #'  theme_jota(grid=FALSE)
 #'
 #'
-#' finalize_ggplot(plot_name = p1,
-#' source = "Fonte: https://jota.info",
+#' finalize_ggplot(plot = p1,
+#' source = "https://jota.info",
 #' # save_filepath = "filename_that_my_plot_should_be_saved_to-nc.png",
 #' width_pixels = 640,
 #' height_pixels = 450,
-#' image_path = "jotalogo.png"
-#' )
+#' image_path = "image.png"
+#' )}
 #'
 #' @export
-finalize_ggplot <- function(plot_name,
+finalize_ggplot <- function(plot,
                           source = "",
                           save_filepath=file.path(Sys.getenv("TMPDIR"), "tmp-nc.png"),
                           width_pixels=640,
@@ -321,7 +333,7 @@ finalize_ggplot <- function(plot_name,
   footer <- create_footer640x450(source, image_path)
 
   #Draw your left-aligned grid
-  plot_left_aligned <- left_align(plot_name, c("subtitle", "title", "caption"))
+  plot_left_aligned <- left_align(plot, c("subtitle", "title", "caption"))
   plot <- arrange_ggplot(plot_left_aligned, footer,
                                  ncol = 1, nrow = 2,
                                  heights = c(1, 0.065/(height_pixels/450)))

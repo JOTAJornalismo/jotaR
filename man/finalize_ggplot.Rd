@@ -2,16 +2,19 @@
 % Please edit documentation in R/finalize_ggplot.R
 \name{finalize_ggplot}
 \alias{finalize_ggplot}
-\title{Arrange alignment and save JOTA ggplot chart}
+\title{Arrange alignment and save JOTA ggplot chart
+
+Running this function will save your plot with the correct guidelines for publication for a BBC News graphic.
+It will left align your title, subtitle and source, add the JOTA logo at the bottom right and save it to your specified location.}
 \usage{
-finalize_ggplot(plot_name, source = "",
+finalize_ggplot(plot, source = "",
   save_filepath = file.path(Sys.getenv("TMPDIR"), "tmp-nc.png"),
   width_pixels = 640, height_pixels = 450,
   image_path = file.path(system.file("figs", package = "jotaR"),
   "jotalogo.png"))
 }
 \arguments{
-\item{plot_name}{The variable name of the plot you have created that you want to format and save}
+\item{plot}{The variable name of the plot you have created that you want to format and save}
 
 \item{source}{The text you want to come after the text 'Source:' in the bottom left hand side of your side}
 
@@ -28,10 +31,13 @@ which needs to be a PNG file - defaults to JOTA logo image that sits within the 
 (Invisibly) an updated ggplot object.
 }
 \description{
+Arrange alignment and save JOTA ggplot chart
+
 Running this function will save your plot with the correct guidelines for publication for a BBC News graphic.
 It will left align your title, subtitle and source, add the JOTA logo at the bottom right and save it to your specified location.
 }
 \examples{
+\dontrun{
 library(ggplot2)
 data(Governismo)
 
@@ -43,13 +49,13 @@ p1 = ggplot(Governismo, aes(x=D1, y=D2)) +
  theme_jota(grid=FALSE)
 
 
-finalize_ggplot(plot_name = p1,
-source = "Fonte: https://jota.info",
+finalize_ggplot(plot = p1,
+source = "https://jota.info",
 # save_filepath = "filename_that_my_plot_should_be_saved_to-nc.png",
 width_pixels = 640,
 height_pixels = 450,
-image_path = "jotalogo.png"
-)
+image_path = "image.png"
+)}
 
 }
 \keyword{finalize_ggplot}

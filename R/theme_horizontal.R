@@ -23,6 +23,7 @@
 #'
 #' @family themes
 #' @export
+#' @importFrom ggplot2 rel
 #' @importFrom ggplot2 theme_grey
 #' @export
 #' @rdname theme_horizontal

@@ -2,7 +2,15 @@
 % Please edit documentation in R/flush_ticks.R
 \name{flush_ticks}
 \alias{flush_ticks}
-\title{Makes axis text labels flush on the ends}
+\title{Makes axis text labels flush on the ends
+
+A covenience function intended for basic, fixed-scale plots only (i.e. does not handle
+free scales in facets).\cr
+\cr
+You need to pass in a ggplot2 object to this function. It can't be \code{+}'d in a chain
+of geoms, coords, scales, themes, etc. It also builds the plot (but does not display
+it) so if the plt takes a while (i.e. has lots of data or transforms) this will also
+take a while.}
 \usage{
 flush_ticks(gg, flush = "XY", plot = TRUE, cat = TRUE)
 }
@@ -19,6 +27,8 @@ flush_ticks(gg, flush = "XY", plot = TRUE, cat = TRUE)
 ggplot2 object with \code{theme()} elements added
 }
 \description{
+Makes axis text labels flush on the ends
+
 A covenience function intended for basic, fixed-scale plots only (i.e. does not handle
 free scales in facets).\cr
 \cr

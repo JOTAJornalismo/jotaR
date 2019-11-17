@@ -23,6 +23,7 @@ agree_disagree_pal <- function() {scales::manual_pal(agree_disagree_palette) }
 #' See [agree_disagree_pal]().
 #'
 #' @md
+#' @importFrom ggplot2 discrete_scale
 #' @inheritDotParams ggplot2::discrete_scale -expand -position
 #' @rdname scale_agree_disagree
 #' @export
@@ -58,6 +59,7 @@ idealpoints_pal <- function() {scales::manual_pal(idealpoints_palette) }
 #' See [idealpoints_pal]().
 #'
 #' @md
+#' @importFrom ggplot2 discrete_scale
 #' @inheritDotParams ggplot2::discrete_scale -expand -position
 #' @rdname scale_idealpoints
 #' @export
@@ -89,6 +91,7 @@ jota_pal <- function() {scales::manual_pal(jota_palette) }
 #' See [jota_pal]().
 #'
 #' @md
+#' @importFrom ggplot2 discrete_scale
 #' @inheritDotParams ggplot2::discrete_scale -expand -position
 #' @rdname scale_jota
 #' @export

@@ -6,6 +6,15 @@
 \usage{
 save_ggplot(plot, width, height, save_filepath)
 }
+\arguments{
+\item{plot}{The plot object (ggplot2)}
+
+\item{width}{Width in pixels that you want to save your chart to}
+
+\item{height}{Height in pixels that you want to save your chart to}
+
+\item{save_filepath}{Exact filepath that you want the plot to be saved to}
+}
 \description{
 A wrapper function for the ggplot2 ggsave with custom parameters.
 }

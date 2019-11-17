@@ -18,3 +18,4 @@ Rlogo.png
 ^\.httr-oauth$
 ^data-raw$
 .travis.yml
+^LICENSE\.md$

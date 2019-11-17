@@ -32,6 +32,10 @@
 #' @param ticks ticks if `TRUE` add ticks
 #' @param panel_col plot background color, if `FALSE` background color is "white".
 #' @export
+#' @importFrom ggplot2 element_rect
+#' @importFrom ggplot2 element_blank
+#' @importFrom ggplot2 element_line
+#' @importFrom ggplot2 margin
 #' @examples \dontrun{
 #' library(ggplot2)
 #' library(dplyr)

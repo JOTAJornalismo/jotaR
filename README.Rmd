@@ -182,8 +182,7 @@ pl0 = group_by(Governismo, Reeleito) %>%
 
 ```{r, fig.width = 9.5}
 
-
-finalize_ggplot(plot_name = pl,
+finalize_ggplot(plot = pl,
  source = "Pesquisa Parlamentar realizada com 200 deputados entre os dias 27 e 30 de outubro.",
  width_pixels = 640,
  height_pixels = 450)

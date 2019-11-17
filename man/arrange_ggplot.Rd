@@ -32,10 +32,16 @@ is placed all the way to the left of each plot.)}
 labels, relative to each subplot. Defaults to 1 for all labels. (Each label
 is placed all the way to the top of each plot.)}
 
+\item{hjust}{A value that controls horizontal justification.}
+
+\item{vjust}{A value that controls vertical justification.}
+
 \item{font.label}{a list of arguments for customizing labels. Allowed values
 are the combination of the following elements: size (e.g.: 14), face (e.g.:
 "plain", "bold", "italic", "bold.italic"), color (e.g.: "red") and family.
 For example font.label = list(size = 14, face = "bold", color ="red").}
+
+\item{align}{A value that controls aligment, one of ("none", "h", "v", "hv").}
 
 \item{widths}{(optional) numerical vector of relative columns widths. For
 example, in a two-column grid, widths = c(2, 1) would make the first column
@@ -55,9 +61,5 @@ return an object of class \code{arrange_ggplot}, which is a ggplot or a
   list of ggplot.
 }
 \description{
-Arrange multiple ggplots on the same page. Wrapper around
-  \code{\link[cowplot]{plot}()}. Can arrange multiple ggplots over
-  multiple pages, compared to the standard
-  \code{\link[cowplot]{plot}()}. Can also create a common unique legend
-  for multiple plots.
+Arrange Multiple ggplots
 }
