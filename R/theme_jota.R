@@ -71,7 +71,7 @@
 #' @rdname theme_jota
 `theme_jota` <- function(
   base_family="Roboto Regular", base_size = 11,
-  plot_title_family=base_family, plot_title_size = 18,
+  plot_title_family = "Roboto Bold", plot_title_size = 18,
   plot_title_face="bold", plot_title_margin = 10,
   subtitle_family=if (.Platform$OS.type == "windows") "Roboto Regular" else "Arial",
   subtitle_size = 13,
@@ -160,31 +160,30 @@
     ret <- ret + ggplot2::theme(axis.ticks.length = grid::unit(5, "pt"))
   }
 
-  xj <- switch(tolower(substr(axis_title_just, 1, 1)), b=0, l=0, m=0.5, c=0.5, r=1, t=1)
-  yj <- switch(tolower(substr(axis_title_just, 2, 2)), b=0, l=0, m=0.5, c=0.5, r=1, t=1)
+  xj <- switch(tolower(substr(axis_title_just, 1, 1)), b = 0, l = 0, m = 0.5, c= 0.5, r = 1, t = 1)
+  yj <- switch(tolower(substr(axis_title_just, 2, 2)), b = 0, l = 0, m = 0.5, c= 0.5, r = 1, t = 1)
 
-  ret <- ret + ggplot2::theme(axis.text.x=element_text(size=axis_text_size, margin=ggplot2::margin(t=0)))
-  ret <- ret + ggplot2::theme(axis.text.y=element_text(size=axis_text_size, margin=ggplot2::margin(r=0)))
-  ret <- ret + ggplot2::theme(axis.title=element_text(size=axis_title_size, family=axis_title_family))
-  ret <- ret + ggplot2::theme(axis.title.x=element_text(size=axis_title_size,
-                                               family=axis_title_family, face=axis_title_face))
-  ret <- ret + ggplot2::theme(axis.title.y=element_text(size=axis_title_size,
-                                               family=axis_title_family, face=axis_title_face))
-  ret <- ret + ggplot2::theme(axis.title.y.right=element_text(size=axis_title_size, angle=90,
-                                                     family=axis_title_family, face=axis_title_face))
-  ret <- ret + ggplot2::theme(strip.text=element_text(hjust=0, size=strip_text_size,
-                                             face=strip_text_face, family=strip_text_family))
+  ret <- ret + ggplot2::theme(axis.text.x = element_text(size=axis_text_size, margin=ggplot2::margin(t = 0)))
+  ret <- ret + ggplot2::theme(axis.text.y = element_text(size=axis_text_size, margin= ggplot2::margin(r = 0)))
+  ret <- ret + ggplot2::theme(axis.title = element_text(size = axis_title_size, family= axis_title_family))
+  ret <- ret + ggplot2::theme(axis.title.x = element_text(size = axis_title_size,
+                                               family = axis_title_family, face= axis_title_face))
+  ret <- ret + ggplot2::theme(axis.title.y = element_text(size = axis_title_size,
+                                               family = axis_title_family, face = axis_title_face))
+  ret <- ret + ggplot2::theme(axis.title.y.right = element_text(size = axis_title_size, angle = 90,
+                                                     family = axis_title_family, face=axis_title_face))
+  ret <- ret + ggplot2::theme(strip.text=element_text(hjust = 0, size = strip_text_size,
+                                             face=strip_text_face, family = strip_text_family))
   ret <- ret + ggplot2::theme(panel.spacing=grid::unit(2, "lines"))
-  ret <- ret + ggplot2::theme(plot.title=element_text(hjust=0, size=plot_title_size,
-                                             margin= ggplot2::margin(b=plot_title_margin),
-                                             family=plot_title_family, face=plot_title_face))
-  ret <- ret + ggplot2::theme(plot.subtitle=element_text(hjust=0, size=subtitle_size,
-                                                margin=ggplot2::margin(b=subtitle_margin),
-                                                family=subtitle_family, face=subtitle_face))
-  ret <- ret + ggplot2::theme(plot.caption=element_text(hjust=1, size=caption_size,
-                                               margin= ggplot2::margin(t=caption_margin),
-                                               family=caption_family, face=caption_face))
-  ret <- ret + ggplot2::theme(plot.margin=plot_margin)
+  ret <- ret + ggplot2::theme(plot.title = element_text(hjust = 0, size = plot_title_size, margin = ggplot2::margin(b=plot_title_margin),
+                                             family = plot_title_family, face = plot_title_face))
+  ret <- ret + ggplot2::theme(plot.subtitle = element_text(hjust = 0, size= subtitle_size,
+                                                margin = ggplot2::margin(b= subtitle_margin),
+                                                family = subtitle_family, face= subtitle_face))
+  ret <- ret + ggplot2::theme(plot.caption=element_text(hjust = 1, size = caption_size,
+                                               margin = ggplot2::margin(t = caption_margin),
+                                               family = caption_family, face= caption_face))
+  ret <- ret + ggplot2::theme(plot.margin = plot_margin)
 
   ret
 
@@ -230,6 +229,14 @@ import_roboto <- function() {
 font_rr <- "Roboto Regular"
 
 
+
+#' @rdname Roboto-Bold
+#' @md
+#' @title Roboto Regular font name R variable aliases
+#' @description `font_rb` == "`Roboto Bold`"
+#' @format length 1 character vector
+#' @export
+font_rr <- "Roboto Bold"
 
 
 
