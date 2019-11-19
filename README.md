@@ -136,11 +136,20 @@ group_by(Governismo, Reeleito) %>%
 ``` r
 
 finalize_ggplot(plot = pl,
- source = "Pesquisa Parlamentar realizada com 200 deputados entre os dias 27 e 30 de outubro.",
  width_pixels = 640,
  height_pixels = 450)
 ```
 
 <img src="inst/figs/README-unnamed-chunk-11-1.png" width="912" style="display: block; margin: auto;" />
+
+``` r
+
+finalize_ggplot(plot = pl,
+ source = "Pesquisa Parlamentar realizada com 200 deputados entre os dias 27 e 30 de outubro.",
+ width_pixels = 640,
+ height_pixels = 450)
+```
+
+<img src="inst/figs/README-unnamed-chunk-12-1.png" width="912" style="display: block; margin: auto;" />
 
 ### jotaR Metrics
