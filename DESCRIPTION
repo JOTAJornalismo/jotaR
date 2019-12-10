@@ -24,12 +24,5 @@ Imports:
     purrr,
     scales,
     extrafont
-RoxygenNote: 6.1.1
-Collate:
-    'data.R'
-    'finalize_ggplot.R'
-    'flush_ticks.R'
-    'scale_colors.R'
-    'theme_horizontal.R'
-    'theme_jota.R'
-    'zzz.R'
+RoxygenNote: 7.0.2
+

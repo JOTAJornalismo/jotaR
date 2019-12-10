@@ -4,8 +4,12 @@
 \alias{theme_horizontal}
 \title{A [ggplot2] theme with opinionated aesthetics for <https://jota.info>}
 \usage{
-theme_horizontal(base_size = 10, base_family = "sans",
-  horizontal = TRUE, dark_panel = FALSE)
+theme_horizontal(
+  base_size = 10,
+  base_family = "sans",
+  horizontal = TRUE,
+  dark_panel = FALSE
+)
 }
 \arguments{
 \item{base_family, base_size}{base font family and size}
@@ -34,6 +38,7 @@ ggplot(Governismo, aes(x=D1, y=D2)) +
 
 }
 \seealso{
-Other themes: \code{\link{theme_jota}}
+Other themes: 
+\code{\link{theme_jota}()}
 }
 \concept{themes}

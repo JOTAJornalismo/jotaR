@@ -1,13 +1,11 @@
-#' @importFrom utils globalVariables
 utils::globalVariables(c("get_legend", ".collapse"))
 
 #' @title Arrange Multiple ggplots
-#'
 #' @description Arrange multiple ggplots on the same page. Wrapper around
-#'   \code{\link[cowplot]. Can arrange multiple ggplots over
-#'   multiple pages, compared to the standard
-#'   \code{\link[cowplot]}. Can also create a common unique legend
-#'   for multiple plots.
+#' \code{\link[cowplot]. Can arrange multiple ggplots over multiple pages,
+#' compared to the standard \code{\link[cowplot]}. Can also create a
+#' common unique legend for multiple plots.
+#'
 #' @param ... list of plots to be arranged into the grid. The plots can be
 #'   either ggplot2 plot objects or arbitrary gtables.
 #' @param plotlist (optional) list of plots to display.

@@ -4,11 +4,23 @@
 \alias{arrange_ggplot}
 \title{Arrange Multiple ggplots}
 \usage{
-arrange_ggplot(..., plotlist = NULL, ncol = NULL, nrow = NULL,
-  labels = NULL, label.x = 0, label.y = 1, hjust = -0.5,
-  vjust = 1.5, font.label = list(size = 14, color = "black", face =
-  "bold", family = NULL), align = c("none", "h", "v", "hv"),
-  widths = 1, heights = 1, legend = NULL, common.legend = FALSE)
+arrange_ggplot(
+  ...,
+  plotlist = NULL,
+  ncol = NULL,
+  nrow = NULL,
+  labels = NULL,
+  label.x = 0,
+  label.y = 1,
+  hjust = -0.5,
+  vjust = 1.5,
+  font.label = list(size = 14, color = "black", face = "bold", family = NULL),
+  align = c("none", "h", "v", "hv"),
+  widths = 1,
+  heights = 1,
+  legend = NULL,
+  common.legend = FALSE
+)
 }
 \arguments{
 \item{...}{list of plots to be arranged into the grid. The plots can be
@@ -61,5 +73,5 @@ return an object of class \code{arrange_ggplot}, which is a ggplot or a
   list of ggplot.
 }
 \description{
-Arrange Multiple ggplots
+
 }

@@ -20,6 +20,49 @@ packageVersion("jotaR")
 jotaR::import_roboto()
 ```
 
+``` r
+df <- data.frame(id = factor(c("Male", "Female", "Age 21-34", "Age 45-54"), levels = c("Age 45-54", "Age 21-34", "Female", "Male")),
+                 mean = c(.4503, .5841, .6543, .4189),
+                 se = c(.1558, .1034, .2108, .1850), stringsAsFactors = FALSE)
+
+df %>%
+  rowwise() %>%
+  mutate(CI95 = list(c(mean + 1.96 * se, mean - 1.96 * se)),
+         CI99 = list(c(mean + 2.58 * se, mean - 2.58 * se))) %>%
+  unnest(c(CI95, CI99)) %>%
+  ggplot() +
+  labs(x = NULL, y = NULL) +
+  geom_line(aes(x = as.numeric(id), y = CI99, group = id, color = id)) +
+  geom_line(aes(x = as.numeric(id), y = CI95, group = id, color = id), size = 3) +
+  geom_point(aes(x = as.numeric(id), y = mean, color = id), fill = "white", shape = 23, size = 3) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  scale_x_continuous(labels = c("Age 45-54", "Age 21-34", "Female", "Male"), limits = c(0.7, 4.3), breaks = 1:4) +
+  theme_jota(grid="Xx") +
+  coord_flip()
+```
+
+<img src="inst/figs/README-unnamed-chunk-4-1.png" width="720" style="display: block; margin: auto;" />
+
+``` r
+df <- data.frame(years=c(1991, 1993, 1997, 2001, 2005, 2007, 2011, 2015),
+                 freq=c(43.20, 52.13, 47.93, 46.29, 40.57, 53.88, 48.92, 50.92))
+
+
+df %>%
+ggplot(aes(x=years, y=freq, label=virgula_format(round(freq,1)))) +
+        geom_line(size=.7, color="#999999") +
+        geom_point(size=3, color="black") +
+        geom_text(vjust=c(2, -1, -1.5*sign(diff(diff(df$freq))) + 0.5)) +
+        theme_jota(grid = "Yy") +
+        geom_hline(yintercept = 0, size = 1, colour="#444444") +
+        theme(axis.title.y=element_text(vjust=1.25)) +
+        scale_x_continuous("", breaks=seq(1990, 2015, 5), minor_breaks=NULL) +
+        scale_y_continuous("", limits=c(0, 60),
+                           breaks=seq(0, 60, 10), minor_breaks=NULL)
+```
+
+<img src="inst/figs/README-unnamed-chunk-5-1.png" width="720" style="display: block; margin: auto;" />
+
 #### Scatterplot
 
 ``` r
@@ -33,7 +76,7 @@ caption="Fonte: https://jota.info") +
 theme_jota()
 ```
 
-<img src="inst/figs/README-unnamed-chunk-4-1.png" width="720" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-6-1.png" width="720" style="display: block; margin: auto;" />
 
 #### With background colors
 
@@ -48,7 +91,7 @@ caption="Fonte: https://jota.info") +
 theme_jota(panel_col = "#F0F0F0")
 ```
 
-<img src="inst/figs/README-unnamed-chunk-5-1.png" width="720" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-7-1.png" width="720" style="display: block; margin: auto;" />
 
 #### Scatterplot (map of ideal points)
 
@@ -69,7 +112,7 @@ labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
    theme(legend.position = "top")
 ```
 
-<img src="inst/figs/README-unnamed-chunk-6-1.png" width="720" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-8-1.png" width="720" style="display: block; margin: auto;" />
 
 ``` r
 # Cut points 
@@ -90,7 +133,7 @@ labs(x="IDEOLOGIA (D1)", y="POSICIONAMENTO ECONÔMICO (D2)",
    theme(legend.position = "top")
 ```
 
-<img src="inst/figs/README-unnamed-chunk-7-1.png" width="720" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-9-1.png" width="720" style="display: block; margin: auto;" />
 
 #### Bar plot
 
@@ -110,7 +153,7 @@ group_by(Governismo, Reeleito) %>%
   theme(axis.text.y=element_blank(), legend.position = "none")
 ```
 
-<img src="inst/figs/README-unnamed-chunk-8-1.png" width="720" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-10-1.png" width="720" style="display: block; margin: auto;" />
 
 ``` r
 group_by(Governismo, Reeleito) %>%
@@ -129,18 +172,17 @@ group_by(Governismo, Reeleito) %>%
    scale_fill_jota()
 ```
 
-<img src="inst/figs/README-unnamed-chunk-9-1.png" width="720" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-11-1.png" width="720" style="display: block; margin: auto;" />
 
 #### Using with logos
 
 ``` r
-
 finalize_ggplot(plot = pl,
  width_pixels = 640,
  height_pixels = 450)
 ```
 
-<img src="inst/figs/README-unnamed-chunk-11-1.png" width="912" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-13-1.png" width="912" style="display: block; margin: auto;" />
 
 ``` r
 
@@ -150,6 +192,6 @@ finalize_ggplot(plot = pl,
  height_pixels = 450)
 ```
 
-<img src="inst/figs/README-unnamed-chunk-12-1.png" width="912" style="display: block; margin: auto;" />
+<img src="inst/figs/README-unnamed-chunk-14-1.png" width="912" style="display: block; margin: auto;" />
 
 ### jotaR Metrics

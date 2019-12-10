@@ -4,21 +4,37 @@
 \alias{theme_jota}
 \title{A \link{ggplot2} theme with opinionated aesthetics for \url{https://jota.info}}
 \usage{
-theme_jota(base_family = "Roboto Regular", base_size = 11,
-  plot_title_family = base_family, plot_title_size = 18,
-  plot_title_face = "bold", plot_title_margin = 10,
-  subtitle_family = if (.Platform$OS.type == "windows") "Roboto Regular"
-  else "Arial", subtitle_size = 13, subtitle_face = "plain",
-  subtitle_margin = 15, strip_text_family = base_family,
-  strip_text_size = 12, strip_text_face = "plain",
-  caption_family = if (.Platform$OS.type == "windows") "Roboto Regular"
-  else "Arial", caption_size = 9, caption_face = "plain",
-  caption_margin = 10, axis_text_size = base_size,
-  axis_title_family = base_family, axis_title_size = 9,
-  axis_title_face = "plain", axis_title_just = "rt",
-  plot_margin = margin(5, 5, 3, 5), grid_col = "#9e9c90",
-  grid = TRUE, axis_col = "#232323", axis = FALSE, ticks = FALSE,
-  panel_col = FALSE)
+theme_jota(
+  base_family = "Roboto Regular",
+  base_size = 13,
+  plot_title_family = "Roboto Bold",
+  plot_title_size = 20,
+  plot_title_face = "bold",
+  plot_title_margin = 10,
+  subtitle_family = if (.Platform$OS.type == "windows") "Roboto Regular" else "Arial",
+  subtitle_size = 16,
+  subtitle_face = "plain",
+  subtitle_margin = 15,
+  strip_text_family = base_family,
+  strip_text_size = 12,
+  strip_text_face = "plain",
+  caption_family = if (.Platform$OS.type == "windows") "Roboto Regular" else "Arial",
+  caption_size = 9,
+  caption_face = "plain",
+  caption_margin = 10,
+  axis_text_size = base_size,
+  axis_title_family = base_family,
+  axis_title_size = 9,
+  axis_title_face = "plain",
+  axis_title_just = "rt",
+  plot_margin = margin(5, 5, 3, 5),
+  grid_col = "#A9A9A9",
+  grid = TRUE,
+  axis_col = "#404040",
+  axis = FALSE,
+  ticks = FALSE,
+  panel_col = FALSE
+)
 }
 \arguments{
 \item{base_family, base_size}{base font family and size}
@@ -37,7 +53,7 @@ theme_jota(base_family = "Roboto Regular", base_size = 11,
 
 \item{axis_title_family, axis_title_face, axis_title_size}{axis title font family, face and size}
 
-\item{axis_title_just}{axis title font justificationk one of \code{[blmcrt]}}
+\item{axis_title_just}{axis title font justificationk one of \verb{[blmcrt]}}
 
 \item{plot_margin}{plot margin (specify with \link[ggplot2:margin]{ggplot2::margin})}
 
@@ -99,10 +115,27 @@ group_by(Governismo, Reeleito) \%>\%
       caption="Fonte: https://jota.info") +
  theme_jota(grid="Y") +
  theme(axis.text.y=element_blank())
+
+
+
+
+ #' group_by(Governismo, Reeleito) \%>\%
+ summarize(Indice = mean(Indice, na.rm=TRUE)) \%>\%
+ mutate(Reeleito = ifelse(Reeleito==1, "Reeleito", "Novato")) \%>\%
+ ggplot(aes(x=Reeleito, y=Indice)) +
+ geom_col() +
+ geom_text(aes(label=round(100*Indice,1)), nudge_y=.02) +
+ labs(x="Status do parlamentar (Reeleitos vs Novatos)", y="Governismo (Indice)",
+      title="Um exemplo de gráfico de barras",
+      subtitle="Novatos compõem a principal força de apoio ao governo",
+      caption="Fonte: https://jota.info") +
+ theme_jota(grid="Y", intercept = "Y") +
+ theme(axis.text.y=element_blank())
 }
 
 }
 \seealso{
-Other themes: \code{\link{theme_horizontal}}
+Other themes: 
+\code{\link{theme_horizontal}()}
 }
 \concept{themes}

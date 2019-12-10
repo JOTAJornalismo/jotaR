@@ -7,11 +7,14 @@
 Running this function will save your plot with the correct guidelines for publication for a BBC News graphic.
 It will left align your title, subtitle and source, add the JOTA logo at the bottom right and save it to your specified location.}
 \usage{
-finalize_ggplot(plot, source = "",
+finalize_ggplot(
+  plot,
+  source = "",
   save_filepath = file.path(Sys.getenv("TMPDIR"), "tmp-nc.png"),
-  width_pixels = 640, height_pixels = 450,
-  image_path = file.path(system.file("figs", package = "jotaR"),
-  "jotalogo.png"))
+  width_pixels = 640,
+  height_pixels = 450,
+  image_path = file.path(system.file("figs", package = "jotaR"), "jotalogo.png")
+)
 }
 \arguments{
 \item{plot}{The variable name of the plot you have created that you want to format and save}

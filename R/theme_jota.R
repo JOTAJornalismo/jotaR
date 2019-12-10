@@ -31,7 +31,6 @@
 #' @param axis add x or y axes? `TRUE`, `FALSE`, "`xy`"
 #' @param ticks ticks if `TRUE` add ticks
 #' @param panel_col plot background color, if `FALSE` background color is "white".
-#' @export
 #' @importFrom ggplot2 element_rect
 #' @importFrom ggplot2 element_blank
 #' @importFrom ggplot2 element_line
@@ -64,19 +63,40 @@
 #'       caption="Fonte: https://jota.info") +
 #'  theme_jota(grid="Y") +
 #'  theme(axis.text.y=element_blank())
+#'
+#'
+#'
+#'
+#'  #' group_by(Governismo, Reeleito) %>%
+#'  summarize(Indice = mean(Indice, na.rm=TRUE)) %>%
+#'  mutate(Reeleito = ifelse(Reeleito==1, "Reeleito", "Novato")) %>%
+#'  ggplot(aes(x=Reeleito, y=Indice)) +
+#'  geom_col() +
+#'  geom_text(aes(label=round(100*Indice,1)), nudge_y=.02) +
+#'  labs(x="Status do parlamentar (Reeleitos vs Novatos)", y="Governismo (Indice)",
+#'       title="Um exemplo de gráfico de barras",
+#'       subtitle="Novatos compõem a principal força de apoio ao governo",
+#'       caption="Fonte: https://jota.info") +
+#'  theme_jota(grid="Y", intercept = "Y") +
+#'  theme(axis.text.y=element_blank())
 #' }
 #'
 #' @family themes
 #' @export
 #' @rdname theme_jota
 `theme_jota` <- function(
-  base_family="Roboto Regular", base_size = 11,
-  plot_title_family = "Roboto Bold", plot_title_size = 18,
-  plot_title_face="bold", plot_title_margin = 10,
+  base_family="Roboto Regular",
+  base_size = 13,
+  plot_title_family = "Roboto Bold",
+  plot_title_size = 20,
+  plot_title_face="bold",
+  plot_title_margin = 10,
   subtitle_family=if (.Platform$OS.type == "windows") "Roboto Regular" else "Arial",
-  subtitle_size = 13,
-  subtitle_face = "plain", subtitle_margin = 15,
-  strip_text_family = base_family, strip_text_size = 12,
+  subtitle_size = 16,
+  subtitle_face = "plain",
+  subtitle_margin = 15,
+  strip_text_family = base_family,
+  strip_text_size = 12,
   strip_text_face = "plain",
   caption_family=if (.Platform$OS.type == "windows") "Roboto Regular" else "Arial",
   caption_size = 9,
@@ -88,26 +108,26 @@
   axis_title_face = "plain",
   axis_title_just = "rt",
   plot_margin = margin(5,5,3,5),
-  grid_col ="#9e9c90" ,
+  grid_col ="#A9A9A9" ,
   grid = TRUE,
-  axis_col = "#232323",
+  axis_col = "#404040",
   axis = FALSE,
   ticks = FALSE,
-  panel_col=FALSE) {
+  panel_col = FALSE) {
 # "#cbcbcb"
 # "#F0F0F0"
   if (inherits(panel_col, "character")) {
   ret <- ggplot2::theme_minimal(base_family=base_family, base_size=base_size) +
-  ggplot2::theme(plot.background = element_rect(linetype = 0, colour = NA,fill = panel_col)) +
-  ggplot2::theme(legend.background = element_rect(linetype = 0,colour = NA))
+  ggplot2::theme(plot.background = element_rect(linetype = 0, colour = NA, fill = panel_col)) +
+  ggplot2::theme(legend.key=ggplot2::element_blank(), legend.title = ggplot2::element_blank(),
+                 legend.text.align = 0, legend.background = element_rect(linetype = 0, colour = NA))
   }
 
   else {
     ret <- ggplot2::theme_minimal(base_family=base_family, base_size=base_size) +
-     ggplot2::theme(legend.background=element_blank()) +
-    ggplot2::theme(legend.key=element_blank())
+     ggplot2::theme(legend.text.align = 0, legend.background=element_blank()) +
+    ggplot2::theme(legend.key=ggplot2::element_blank(), legend.title = ggplot2::element_blank())
   }
-
 
 
   if (inherits(grid, "character") | grid == TRUE) {
@@ -128,22 +148,22 @@
   }
 
   if (inherits(axis, "character") | axis == TRUE) {
-    ret <- ret + ggplot2::theme(axis.line=element_line(color=axis_col, size=0.20))
+    ret <- ret + ggplot2::theme(axis.line=element_line(color=axis_col, size=0.50))
     if (inherits(axis, "character")) {
       axis <- tolower(axis)
       if (regexpr("x", axis)[1] < 0) {
         ret <- ret + ggplot2::theme(axis.line.x=element_blank())
       } else {
-        ret <- ret + ggplot2::theme(axis.line.x=element_line(color=axis_col, size=0.20))
+        ret <- ret + ggplot2::theme(axis.line.x=element_line(color=axis_col, size=0.50))
       }
       if (regexpr("y", axis)[1] < 0) {
         ret <- ret + ggplot2::theme(axis.line.y=element_blank())
       } else {
-        ret <- ret + ggplot2::theme(axis.line.y=element_line(color=axis_col, size=0.20))
+        ret <- ret + ggplot2::theme(axis.line.y=element_line(color=axis_col, size=0.50))
       }
     } else {
-      ret <- ret + ggplot2::theme(axis.line.x=element_line(color=axis_col, size=0.20))
-      ret <- ret + ggplot2::theme(axis.line.y=element_line(color=axis_col, size=0.20))
+      ret <- ret + ggplot2::theme(axis.line.x=element_line(color=axis_col, size=0.50))
+      ret <- ret + ggplot2::theme(axis.line.y=element_line(color=axis_col, size=0.50))
     }
   } else {
     ret <- ret + ggplot2::theme(axis.line=element_blank())
@@ -154,10 +174,10 @@
     ret <- ret + ggplot2::theme(axis.ticks.x = element_blank())
     ret <- ret + ggplot2::theme(axis.ticks.y = element_blank())
   } else {
-    ret <- ret + ggplot2::theme(axis.ticks = element_line(color=axis_col, size=0.20))
-    ret <- ret + ggplot2::theme(axis.ticks.x = element_line(color=axis_col, size=0.20))
-    ret <- ret + ggplot2::theme(axis.ticks.y = element_line(color=axis_col, size=0.20))
-    ret <- ret + ggplot2::theme(axis.ticks.length = grid::unit(5, "pt"))
+    ret <- ret + ggplot2::theme(axis.ticks = element_line(color=axis_col, size=0.25))
+    ret <- ret + ggplot2::theme(axis.ticks.x = element_line(color=axis_col, size=0.25))
+    ret <- ret + ggplot2::theme(axis.ticks.y = element_line(color=axis_col, size=0.25))
+    ret <- ret + ggplot2::theme(axis.ticks.length = grid::unit(1.6, "mm"))
   }
 
   xj <- switch(tolower(substr(axis_title_just, 1, 1)), b = 0, l = 0, m = 0.5, c= 0.5, r = 1, t = 1)
@@ -186,7 +206,6 @@
   ret <- ret + ggplot2::theme(plot.margin = plot_margin)
 
   ret
-
 }
 
 
@@ -236,7 +255,7 @@ font_rr <- "Roboto Regular"
 #' @description `font_rb` == "`Roboto Bold`"
 #' @format length 1 character vector
 #' @export
-font_rr <- "Roboto Bold"
+font_rb <- "Roboto Bold"
 
 
 

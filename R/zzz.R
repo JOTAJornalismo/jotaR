@@ -21,3 +21,6 @@ jotaR <- new.env()
   } # nocov end
 
 }
+
+
+

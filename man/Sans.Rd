@@ -9,6 +9,6 @@
 font_sr
 }
 \description{
-\code{font_sr} == "\code{Sans Regular}"
+\code{font_sr} == "\verb{Sans Regular}"
 }
 \keyword{datasets}
