@@ -23,4 +23,11 @@ jotaR <- new.env()
 }
 
 
+.onLoad <- function(...){
+  packageStartupMessage("Making Brazilian institutions more predictable")
+  packageStartupMessage("http://jota.info")
+  packageStartupMessage("\n")
+}
+
+
 

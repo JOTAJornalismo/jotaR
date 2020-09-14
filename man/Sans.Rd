@@ -4,7 +4,9 @@
 \name{font_sr}
 \alias{font_sr}
 \title{Sans Regular font name R variable aliases}
-\format{length 1 character vector}
+\format{
+length 1 character vector
+}
 \usage{
 font_sr
 }

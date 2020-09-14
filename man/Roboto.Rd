@@ -4,7 +4,9 @@
 \name{font_rr}
 \alias{font_rr}
 \title{Roboto Regular font name R variable aliases}
-\format{length 1 character vector}
+\format{
+length 1 character vector
+}
 \usage{
 font_rr
 }
