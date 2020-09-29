@@ -107,7 +107,7 @@
   axis_title_size = 9,
   axis_title_face = "plain",
   axis_title_just = "rt",
-  plot_margin = margin(5,5,3,5),
+  plot_margin = margin(15,5,3,5),
   grid_col ="#A9A9A9" ,
   grid = TRUE,
   axis_col = "#404040",

@@ -1,6 +1,11 @@
 
 ## `jotaR`: Visual aesthetic themes for ‘ggplot2’ used at <https://jota.info>
 
+
+### Data visualization
+<img src="inst/figs/README-avaliacao.png" width="912" style="display: block; margin: auto;" />
+
+
 ### Installation
 
 ``` r
